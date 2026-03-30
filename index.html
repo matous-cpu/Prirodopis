@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hravý přírodopis 7</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; padding: 20px; }
+        
+        header { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .nadrazena { background: white; padding: 30px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .nadrazena h2 { color: #27ae60; font-size: 2em; margin-bottom: 20px; border-bottom: 3px solid #2ecc71; padding-bottom: 10px; }
+        
+        .tema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        
+        .tema { background: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #2ecc71; cursor: pointer; transition: all 0.3s; }
+        .tema:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-3px); }
+        .tema h3 { color: #27ae60; margin-bottom: 10px; font-size: 1.3em; }
+        .tema .icon { font-size: 2em; margin-bottom: 10px; }
+        .tema .popis { color: #555; line-height: 1.5; margin-bottom: 15px; font-size: 0.95em; }
+        .tema .druhy { background: #e8f5e9; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.9em; }
+        .tema .druhy strong { color: #27ae60; display: block; margin-bottom: 5px; }
+        .tema button { background: #2ecc71; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9em; width: 100%; }
+        .tema button:hover { background: #27ae60; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .modal.show { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; max-width: 500px; max-height: 80vh; overflow-y: auto; position: relative; }
+        .modal-content h2 { color: #27ae60; margin-bottom: 20px; }
+        .modal-content p { line-height: 1.6; color: #555; margin-bottom: 15px; }
+        .test-q { background: #f0f0f0; padding: 15px; margin: 15px 0; border-radius: 5px; }
+        .test-q strong { display: block; margin-bottom: 8px; color: #27ae60; }
+        .test-q label { display: block; margin: 5px 0; cursor: pointer; }
+        .test-q input { margin-right: 8px; cursor: pointer; }
+        .feedback { margin-top: 10px; font-weight: bold; padding: 10px; border-radius: 5px; display: none; }
+        .feedback.show { display: block; }
+        .feedback.correct { background: #d4edda; color: #155724; }
+        .feedback.wrong { background: #f8d7da; color: #721c24; }
+        .close { position: absolute; top: 15px; right: 15px; font-size: 28px; cursor: pointer; color: #999; }
+        .close:hover { color: #000; }
+        button.submit-test { background: #2ecc71; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; }
+        button.submit-test:hover { background: #27ae60; }
+        
+        footer { text-align: center; padding: 20px; color: #666; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌿 Hravý přírodopis 7 🐾</h1>
+        <p>Interaktivní učebnice - Procházej témata a nauč se!</p>
+    </header>
+
+    <div class="container">
+        <!-- STRUNATCI -->
+        <div class="nadrazena">
+            <h2>🦴 STRUNATCI 🦴</h2>
+            <div class="tema-grid">
+                <div class="tema">
+                    <div class="icon">🐠</div>
+                    <h3>Ryby</h3>
+                    <div class="popis">Nejstarší a druhově nejpočetnější skupinou obratlovců. Dýchají žábrami, mají tělo pokryté šupinami. Jsou studenokrevné. Rozmnožují se kladením jiker.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🐠 Kapr obecný<br>
+                        🐟 Pstruh obecný<br>
+                        🦈 Žralok bílý
+                    </div>
+                    <button onclick="openTest('ryby')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🐸</div>
+                    <h3>Obojživelníci</h3>
+                    <div class="popis">Studenokrevní obratlovci mezi vodou a souší. Larvy (pulci) dýchají žábrami, dospělci plícemi a kůží. Procházejí metamorfózou.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🐸 Žába zelená<br>
+                        🐸 Ropucha obecná<br>
+                        🦎 Čoltek obecný
+                    </div>
+                    <button onclick="openTest('obojziv')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🐍</div>
+                    <h3>Plazi</h3>
+                    <div class="popis">Studenokrevní obratlovci s tělem pokrytým rohovitými šupinami. Dýchají jen plícemi. Rozmnožují se vejci nebo živě.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🐍 Had užovka<br>
+                        🦎 Ještěr obecný<br>
+                        🐢 Želva bahenní
+                    </div>
+                    <button onclick="openTest('plazi')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🦅</div>
+                    <h3>Ptáci</h3>
+                    <div class="popis">Teplokrevní obratlovci s peřím. Mají zobák bez zubů. Stálá teplota okolo 40°C. Většina umí létat.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🦅 Orel královský<br>
+                        🦅 Jestřáb lesní<br>
+                        🐦 Sojka obecná
+                    </div>
+                    <button onclick="openTest('ptaci')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🦁</div>
+                    <h3>Savci</h3>
+                    <div class="popis">Teplokrevní obratlovci se srstí a mléčnými žlázami. Mají čtyřdílné srdce a stálou teplotu. Drtivá majorita rodí živá mláďata.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🦁 Lev africký<br>
+                        🐻 Medvěd hnědý<br>
+                        🐺 Vlk obecný
+                    </div>
+                    <button onclick="openTest('savci')">📝 Test</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTANIKA -->
+        <div class="nadrazena">
+            <h2>🌿 BOTANIKA 🌿</h2>
+            <div class="tema-grid">
+                <div class="tema">
+                    <div class="icon">🌱</div>
+                    <h3>Mechorosty</h3>
+                    <div class="popis">Nižší rostliny bez pravých vodivých pletiv a cévních svazků. Nemají pravé kořeny. Rostou na vlhkých místech. Rozmnožují se výtrusy.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🌱 Mechu rezavý<br>
+                        🌱 Jezovec jednotahý<br>
+                        🌱 Játrovka třídílná
+                    </div>
+                    <button onclick="openTest('mechorosty')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🌿</div>
+                    <h3>Kapraďorosty</h3>
+                    <div class="popis">Výtrusné cévnaté rostliny s prvními pravými kořeny a cévami! Mají složité peřité listy. Rozmnožují se výtrusy.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🌿 Kapradina samec<br>
+                        🌿 Pryšec přílivý<br>
+                        🌿 Přeslička polní
+                    </div>
+                    <button onclick="openTest('kapradorosty')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🌲</div>
+                    <h3>Nahosemenné rostliny</h3>
+                    <div class="popis">Staré semenné rostliny - patří sem jehličnany. Semena bez ochranného obalu, leží nahá. Semena zrají v šiškách.</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🌲 Smrk ztepilý<br>
+                        🌲 Borovice lesní<br>
+                        🌲 Modřín evropský
+                    </div>
+                    <button onclick="openTest('nahosemenne')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🌻</div>
+                    <h3>Krytosemenné rostliny</h3>
+                    <div class="popis">NEJNOVĚJŠÍ VELKÝCH SKUPIN ROSTLIN! Mají květy a semena chráněná v semenících a plodech. Nejpočetnější skupina rostlin!</div>
+                    <div class="druhy">
+                        <strong>Příklady druhů:</strong>
+                        🌻 Slunečnice obecná<br>
+                        🌹 Růže šípková<br>
+                        🌽 Kukuřice setá
+                    </div>
+                    <button onclick="openTest('krytosemenne')">📝 Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PRO TESTY -->
+    <div id="testModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTest()">&times;</span>
+            <h2 id="testTitle">Test</h2>
+            <div id="testContent"></div>
+            <button class="submit-test" onclick="submitTest()">Zkontrolovat odpovědi</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hravý přírodopis 7 - Interaktivní učebnice</p>
+    </footer>
+
+    <script>
+        const tests = {
+            ryby: {
+                title: "🐠 RYBY",
+                questions: [
+                    { q: "Jak ryby dýchají?", options: ["Plícemi", "Žábrami", "Kůží"], correct: 1 },
+                    { q: "Jakou teplotu mají ryby?", options: ["Stálou 37°C", "Závislou na okolí", "Vždy vysokou"], correct: 1 },
+                    { q: "Čím je pokryto tělo?", options: ["Peřím", "Šupinami a slizem", "Srstí"], correct: 1 }
+                ]
+            },
+            obojziv: {
+                title: "🐸 OBOJŽIVELNÍCI",
+                questions: [
+                    { q: "Kde žijí obojživelníci?", options: ["Jen ve vodě", "Ve vodě i na souši", "Jen na souši"], correct: 1 },
+                    { q: "Jak dýchají dospělci?", options: ["Jen plícemi", "Plícemi i kůží", "Jen kůží"], correct: 1 },
+                    { q: "Co se děje u obojživelníků?", options: ["Hibernace", "Metamorfóza", "Růst"], correct: 1 }
+                ]
+            },
+            plazi: {
+                title: "🐍 PLAZI",
+                questions: [
+                    { q: "Čím je pokryto tělo plaza?", options: ["Peřím", "Rohovitými šupinami", "Srstí"], correct: 1 },
+                    { q: "Jak plazi dýchají?", options: ["Žábrami", "Jen plícemi", "Kůží"], correct: 1 },
+                    { q: "Jaká je teplota plazů?", options: ["Stálá", "Závislá na prostředí", "Vysoká"], correct: 1 }
+                ]
+            },
+            ptaci: {
+                title: "🦅 PTÁCI",
+                questions: [
+                    { q: "Jakou teplotu mají ptáci?", options: ["Nižší než savci", "Stálou okolo 40°C", "Znáhodilou"], correct: 1 },
+                    { q: "Čím jsou pokryti?", options: ["Srstí", "Peřím", "Šupinami"], correct: 1 },
+                    { q: "Jak se rozmnožují?", options: ["Živými mláďaty", "Vejci", "Spory"], correct: 1 }
+                ]
+            },
+            savci: {
+                title: "🦁 SAVCI",
+                questions: [
+                    { q: "Co je hlavní znak savců?", options: ["Srst", "Mléčné žlázy", "Zuby"], correct: 1 },
+                    { q: "Jakou teplotu mají?", options: ["Znáhodilou", "Stálou", "Nízkou"], correct: 1 },
+                    { q: "Jak se rozmnožují?", options: ["Vejci", "Živými mláďaty", "Spory"], correct: 1 }
+                ]
+            },
+            mechorosty: {
+                title: "🌱 MECHOROSTY",
+                questions: [
+                    { q: "Co chybí mechům?", options: ["Listy", "Pravé kořeny a cévy", "Barva"], correct: 1 },
+                    { q: "Jak se rozmnožují?", options: ["Semeny", "Výtrusy", "Cibulkami"], correct: 1 },
+                    { q: "Kde rostoú?", options: ["V pouštích", "Na vlhkých místech", "V oceánu"], correct: 1 }
+                ]
+            },
+            kapradorosty: {
+                title: "🌿 KAPRAĎOROSTY",
+                questions: [
+                    { q: "Co mají kapraďorosty?", options: ["Jen listy", "Cévy a peřité listy", "Květy"], correct: 1 },
+                    { q: "Jak se rozmnožují?", options: ["Semeny", "Výtrusy", "Cibulkami"], correct: 1 },
+                    { q: "Jakou strukturu mají?", options: ["Bez kořenů", "S pravými kořeny a cévami", "Jen folie"], correct: 1 }
+                ]
+            },
+            nahosemenne: {
+                title: "🌲 NAHOSEMENNÉ",
+                questions: [
+                    { q: "Co je typické?", options: ["Mají květy", "Semena bez obalu", "Jen listy"], correct: 1 },
+                    { q: "Příklad?", options: ["Jablko", "Smrk", "Jahoda"], correct: 1 },
+                    { q: "Kde zrají semena?", options: ["V květech", "V šiškách", "V zemi"], correct: 1 }
+                ]
+            },
+            krytosemenne: {
+                title: "🌻 KRYTOSEMENNÉ",
+                questions: [
+                    { q: "Co mají krytosemenné?", options: ["Jen listy", "Květy a plody", "Jen kořeny"], correct: 1 },
+                    { q: "Na kolik skupin se dělí?", options: ["1", "2", "3"], correct: 1 },
+                    { q: "Příklad?", options: ["Smrk", "Jablko", "Borovice"], correct: 1 }
+                ]
+            }
+        };
+
+        let currentTest = null;
+
+        function openTest(testId) {
+            currentTest = testId;
+            const test = tests[testId];
+            document.getElementById('testTitle').textContent = test.title;
+            
+            let html = '';
+            test.questions.forEach((q, i) => {
+                html += `<div class="test-q">
+                    <strong>${i + 1}. ${q.q}</strong>`;
+                q.options.forEach((opt, j) => {
+                    html += `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+                });
+                html += `<div class="feedback" id="feedback${i}"></div></div>`;
+            });
+            
+            document.getElementById('testContent').innerHTML = html;
+            document.getElementById('testModal').classList.add('show');
+        }
+
+        function closeTest() {
+            document.getElementById('testModal').classList.remove('show');
+        }
+
+        function submitTest() {
+            const test = tests[currentTest];
+            test.questions.forEach((q, i) => {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const feedback = document.getElementById(`feedback${i}`);
+                
+                if (!selected) {
+                    feedback.textContent = '⚠️ Nevybrali jste odpověď!';
+                    feedback.className = 'feedback wrong show';
+                } else if (parseInt(selected.value) === q.correct) {
+                    feedback.textContent = '✅ Správně!';
+                    feedback.className = 'feedback correct show';
+                } else {
+                    feedback.textContent = '❌ Špatně! Zkus znovu.';
+                    feedback.className = 'feedback wrong show';
+                }
+            });
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('testModal');
+            if (e.target === modal) {
+                closeTest();
+            }
+        }
+    </script>
+</body>
+</html>
