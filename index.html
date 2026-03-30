@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hravý přírodopis 7</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; padding: 20px; }
+        
+        header { background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .nadrazena { background: white; padding: 30px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .nadrazena h2 { color: #27ae60; font-size: 2em; margin-bottom: 20px; border-bottom: 3px solid #2ecc71; padding-bottom: 10px; }
+        
+        .tema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        
+        .tema { background: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #2ecc71; cursor: pointer; transition: all 0.3s; }
+        .tema:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-3px); }
+        .tema h3 { color: #27ae60; margin-bottom: 10px; font-size: 1.3em; }
+        .tema .icon { font-size: 2em; margin-bottom: 10px; }
+        .tema .popis { color: #555; line-height: 1.5; margin-bottom: 15px; }
+        .tema button { background: #2ecc71; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9em; }
+        .tema button:hover { background: #27ae60; }
+        
+        footer { text-align: center; padding: 20px; color: #666; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌿 Hravý přírodopis 7 🐾</h1>
+        <p>Interaktivní učebnice - Procházej témata a nauč se!</p>
+    </header>
+
+    <div class="container">
+        <!-- STRUNATCI -->
+        <div class="nadrazena">
+            <h2>🦴 STRUNATCI 🦴</h2>
+            <div class="tema-grid">
+                <div class="tema">
+                    <div class="icon">🐠</div>
+                    <h3>Ryby</h3>
+                    <div class="popis">Nejstarší a druhově nejpočetnější skupinou obratlovců. Dýchají žábrami, mají tělo pokryté šupinami. Jsou studenokrevné - jejich teplota se přizpůsobuje okolímu prostředí. Rozmnožují se kladením jiker. Patří sem přes 30 000 druhů.</div>
+                    <button onclick="alert('RYBY - TEST:\n\n1) Jak ryby dýchají?\n✓ Žábrami\n\n2) Jakou teplotu mají?\n✓ Závislou na okolí\n\n3) Čím je pokryto tělo?\n✓ Šupinami a slizem')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🐸</div>
+                    <h3>Obojživelníci</h3>
+                    <div class="popis">Studenokrevní obratlovci tvoříci přechod mezi vodou a souší. Larvy (pulci) dýchají žábrami, dospělci plícemi a kůží. Procházejí metamorfózou. Mají tenkou, vlhkou kůži bez šupin. Hlavní skupiny: žáby, mloci, čolci.</div>
+                    <button onclick="alert('OBOJŽIVELNÍCI - TEST:\n\n1) Kde žijí?\n✓ Ve vodě i na souši\n\n2) Jak dýchají dospělci?\n✓ Plícemi i kůží\n\n3) Co se děje?\n✓ Metamorfóza (pulec→žába)')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🐍</div>
+                    <h3>Plazi</h3>
+                    <div class="popis">Studenokrevní obratlovci s tělem pokrytým rohovitými šupinami. Dýchají jen plícemi. Jsou studenokrevní - teplota závislá na okolí. Patří sem hadi, ještěři, želvy a krokodýli. Rozmnožují se vejci nebo živě.</div>
+                    <button onclick="alert('PLAZI - TEST:\n\n1) Čím je pokryto tělo?\n✓ Rohovitými šupinami\n\n2) Jak plazi dýchají?\n✓ Jen plícemi\n\n3) Jaká je teplota?\n✓ Závislá na prostředí')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🦅</div>
+                    <h3>Ptáci</h3>
+                    <div class="popis">Teplokrevní obratlovci s peřím - jedinečnou vlastností. Mají zobák bez zubů. Jsou teplokrevní - stálá teplota okolo 40°C. Většina umí létat díky křídlům a lehké kostře. Rozmnožují se vejci.</div>
+                    <button onclick="alert('PTÁCI - TEST:\n\n1) Jakou teplotu maj��?\n✓ Stálou okolo 40°C\n\n2) Čím jsou pokryti?\n✓ Peřím\n\n3) Jak se rozmnožují?\n✓ Kladením vajec')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🦁</div>
+                    <h3>Savci</h3>
+                    <div class="popis">Teplokrevní obratlovci se srstí a mléčnými žlázami pro kojení mláďat. Mají stálou tělesnou teplotu. Mají čtyřdílné srdce. Mají tři sluchové kůstky. Drtivá majorita rodí živá mláďata. Patří sem přes 6 400 druhů.</div>
+                    <button onclick="alert('SAVCI - TEST:\n\n1) Co je hlavní znak?\n✓ Mléčné žlázy\n\n2) Jakou teplotu mají?\n✓ Stálou\n\n3) Jak se rozmnožují?\n✓ Živými mláďaty')">📝 Test</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTANIKA -->
+        <div class="nadrazena">
+            <h2>🌿 BOTANIKA 🌿</h2>
+            <div class="tema-grid">
+                <div class="tema">
+                    <div class="icon">🌱</div>
+                    <h3>Mechorosty</h3>
+                    <div class="popis">Nižší rostliny bez pravých vodivých pletiv a cévních svazků. Zahrnují mechy a játrovky. Nemají pravé kořeny, jen rhizoidy. Rostou na vlhkých místech. Nemají květy. Rozmnožují se výtrusy.</div>
+                    <button onclick="alert('MECHOROSTY - TEST:\n\n1) Co chybí?\n✓ Pravé kořeny a cévy\n\n2) Jak se rozmnožují?\n✓ Výtrusy\n\n3) Kde typicky rostou?\n✓ Na vlhkých místech')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🌿</div>
+                    <h3>Kapraďorosty</h3>
+                    <div class="popis">Výtrusné cévnaté rostliny s prvními pravými kořeny a cévami! Mají složité peřité listy. Nemají květy. Rozmnožují se výtrusy. Staré skupiny - objevily se v prvohorách a tvořily pralesy.</div>
+                    <button onclick="alert('KAPRAĎOROSTY - TEST:\n\n1) Co mají?\n✓ Cévy a peřité listy\n\n2) Jak se rozmnožují?\n✓ Výtrusy\n\n3) Jakou strukturu?\n✓ S pravými kořeny a cévami')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🌲</div>
+                    <h3>Nahosemenné rostliny</h3>
+                    <div class="popis">Staré semenné rostliny - patří sem jehličnany (smrk, borovice). Charakteristické: semena bez ochranného obalu, leží nahá na plodolistu. Semena zrají v šiškách. Nejsou to květiny. Velmi staré - od prvohor.</div>
+                    <button onclick="alert('NAHOSEMENNÉ - TEST:\n\n1) Co je typické?\n✓ Semena bez obalu\n\n2) Příklad?\n✓ Smrk\n\n3) Kde zrají semena?\n✓ V šiškách')">📝 Test</button>
+                </div>
+
+                <div class="tema">
+                    <div class="icon">🌻</div>
+                    <h3>Krytosemenné rostliny</h3>
+                    <div class="popis">NEJNOVĚJŠÍ VELKÝCH SKUPIN ROSTLIN! Mají květy a semena chráněná v semenících, která se vyvíjejí v plody. Jsou nejpočetnější - přes 350 000 druhů! Zahrnují byliny, keře i stromy. Jsou základem pozemské vegetace.</div>
+                    <button onclick="alert('KRYTOSEMENNÉ - TEST:\n\n1) Co mají?\n✓ Květy a plody\n\n2) Na kolik skupin se dělí?\n✓ 2 - jednoděložné a dvouděložné\n\n3) Příklad?\n✓ Jablko')">📝 Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hravý přírodopis 7 - Interaktivní učebnice</p>
+    </footer>
+</body>
+</html>
