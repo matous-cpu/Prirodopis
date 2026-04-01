@@ -230,88 +230,112 @@
     <script>
         const tests = {
             ryby: {
-                title: "🐠 RYBY",
-                questions: [
-                    { q: "Jak ryby dýchají?", options: ["Plícemi", "Žábrami", "Kůží"], correct: 1 },
-                    { q: "Jakou teplotu mají ryby?", options: ["Stálou 37°C", "Závislou na okolí", "Vždy vysokou"], correct: 1 },
-                    { q: "Čím je pokryto tělo?", options: ["Peřím", "Šupinami a slizem", "Srstí"], correct: 1 }
+                title: "🐠 BIOLOGIE RYB (9. ročník)",
+                pool: [
+                    { q: "Jak funguje osmoregulace u mořských ryb?", options: ["Pijí vodu a sůl vylučují žábrami", "Nepijí a sůl vstřebávají", "Vylučují velké množství zředěné moči"], correct: 0 },
+                    { q: "Co je to protiproudý systém v žábrách?", options: ["Krev a voda proudí stejným směrem", "Krev a voda proudí opačným směrem", "Voda neproudí, jen se filtruje"], correct: 1 },
+                    { q: "Která část srdce ryb vyrovnává krevní tlak?", options: ["Sinus venosus", "Atrium", "Bulbus arteriosus"], correct: 2 },
+                    { q: "Co detekují neuromasty v postranní čáře?", options: ["Elektrické pole", "Vibrace a proudění vody", "Tlak vzduchu"], correct: 1 },
+                    { q: "Která skupina ryb má masité ploutve s vnitřní kostrou?", options: ["Paprskoploutví", "Svaloploutví (Sarcopterygii)", "Paryby"], correct: 1 }
                 ]
             },
             obojziv: {
-                title: "🐸 OBOJŽIVELNÍCI",
-                questions: [
-                    { q: "Kde žijí obojživelníci?", options: ["Jen ve vodě", "Ve vodě i na souši", "Jen na souši"], correct: 1 },
-                    { q: "Jak dýchají dospělci?", options: ["Jen plícemi", "Plícemi i kůží", "Jen kůží"], correct: 1 },
-                    { q: "Co se děje u obojživelníků?", options: ["Hibernace", "Metamorfóza", "Růst"], correct: 1 }
+                title: "🐸 BIOLOGIE OBOJŽIVELNÍKŮ (9. ročník)",
+                pool: [
+                    { q: "Který hormon primárně řídí metamorfózu?", options: ["Adrenalin", "Tyroxin (T3/T4)", "Inzulín"], correct: 1 },
+                    { q: "Co je to bukální čerpadlo?", options: ["Mechanismus polykání vzduchu", "Orgán pro drcení potravy", "Typ srdce"], correct: 0 },
+                    { q: "Jakou funkci má spirální řasa v srdci?", options: ["Zastavuje krvácení", "Odděluje okysličenou a odkysličenou krev", "Pohání krev do svalů"], correct: 1 },
+                    { q: "Který typ dýchání převažuje u mločíků bez plic?", options: ["Plicní", "Kožní (kutánní)", "Žaberní"], correct: 1 },
+                    { q: "Z které evoluční skupiny se vyvinuli první tetrapodi?", options: ["Agnatha", "Rhipidistia", "Chondrichthyes"], correct: 1 }
                 ]
             },
             plazi: {
-                title: "🐍 PLAZI",
-                questions: [
-                    { q: "Čím je pokryto tělo plaza?", options: ["Peřím", "Rohovitými šupinami", "Srstí"], correct: 1 },
-                    { q: "Jak plazi dýchají?", options: ["Žábrami", "Jen plícemi", "Kůží"], correct: 1 },
-                    { q: "Jaká je teplota plazů?", options: ["Stálá", "Závislá na prostředí", "Vysoká"], correct: 1 }
+                title: "🐍 BIOLOGIE PLAZŮ (9. ročník)",
+                pool: [
+                    { q: "Která blána v amniotickém vejci zajišťuje výměnu plynů?", options: ["Amnion", "Chorion", "Žloutkový váček"], correct: 1 },
+                    { q: "Co je to Foramen Panizzae u krokodýlů?", options: ["Otvor v lebce", "Spojka mezi levou a pravou aortou", "Součást ucha"], correct: 1 },
+                    { q: "K čemu slouží Jacobsonův orgán?", options: ["K detekci tepla", "K chemické analýze pachů", "K vnímání zvuku"], correct: 1 },
+                    { q: "Jaký dusíkatý odpad vylučují šupinatí plazi?", options: ["Močovinu", "Amonyak", "Kyselinu močovou"], correct: 2 },
+                    { q: "Která linie lebek vede k moderním plazům a ptákům?", options: ["Anapsidní", "Synapsidní", "Diapsidní"], correct: 2 }
                 ]
             },
             ptaci: {
-                title: "🦅 PTÁCI",
-                questions: [
-                    { q: "Jakou teplotu mají ptáci?", options: ["Nižší než savci", "Stálou okolo 40°C", "Znáhodilou"], correct: 1 },
-                    { q: "Čím jsou pokryti?", options: ["Srstí", "Peřím", "Šupinami"], correct: 1 },
-                    { q: "Jak se rozmnožují?", options: ["Živými mláďaty", "Vejci", "Spory"], correct: 1 }
+                title: "🦅 BIOLOGIE PTÁKŮ (9. ročník)",
+                pool: [
+                    { q: "Kolik vzdušných vaků má obvykle respirační systém ptáků?", options: ["2", "5", "9"], correct: 2 },
+                    { q: "Který sval zajišťuje ZDVIH křídla nahoru přes kladkový systém?", options: ["Pectoralis major", "Supracoracoideus", "Biceps brachii"], correct: 1 },
+                    { q: "Co je to Pecten oculi v oku ptáků?", options: ["Barevná duhovka", "Hřebínkovitý útvar pro výživu sítnice", "Třetí víčko"], correct: 1 },
+                    { q: "Jak se nazývá srostlá sáňková kost?", options: ["Synsacrum", "Furcula", "Pygostyl"], correct: 1 },
+                    { q: "Který proces umožňuje dýchání i při výdechu?", options: ["Křížoproudá výměna ve vzdušných vacích", "Jednosměrné proudění plícemi", "Podtlakové dýchání"], correct: 1 }
                 ]
             },
             savci: {
-                title: "🦁 SAVCI",
-                questions: [
-                    { q: "Co je hlavní znak savců?", options: ["Srst", "Mléčné žlázy", "Zuby"], correct: 1 },
-                    { q: "Jakou teplotu mají?", options: ["Znáhodilou", "Stálou", "Nízkou"], correct: 1 },
-                    { q: "Jak se rozmnožují?", options: ["Vejci", "Živými mláďaty", "Spory"], correct: 1 }
+                title: "🦁 BIOLOGIE SAVCŮ (9. ročník)",
+                pool: [
+                    { q: "Který oblouk aorty je u savců zachován?", options: ["Pravý", "Levý", "Oba"], correct: 1 },
+                    { q: "Z čeho se vyvinulo kladívko a kovadlinka v uchu?", options: ["Z lebečních kostí", "Z kostí čelistního kloubu plazů", "Z prvních obratlů"], correct: 1 },
+                    { q: "Která skupina savců postrádá corpus callosum?", options: ["Placentálové", "Vačnatci", "Primáti"], correct: 1 },
+                    { q: "Co charakterizuje erytrocyty savců v dospělosti?", options: ["Mají dvě jádra", "Jsou bezjaderné (anukleátní)", "Obsahují mitochondrie"], correct: 1 },
+                    { q: "Která část mozku prošla u savců největší expanzí?", options: ["Mozeček", "Neokortex", "Střední mozek"], correct: 1 }
                 ]
             },
             mechorosty: {
-                title: "🌱 MECHOROSTY",
-                questions: [
-                    { q: "Co chybí mechům?", options: ["Listy", "Pravé kořeny a cévy", "Barva"], correct: 1 },
-                    { q: "Jak se rozmnožují?", options: ["Semeny", "Výtrusy", "Cibulkami"], correct: 1 },
-                    { q: "Kde rostoú?", options: ["V pouštích", "Na vlhkých místech", "V oceánu"], correct: 1 }
+                title: "🌱 MECHOROSTY (9. ročník)",
+                pool: [
+                    { q: "Jak se nazývají vodivé buňky analogické xylému u mechů?", options: ["Leptoidy", "Hydroidy", "Tracheje"], correct: 1 },
+                    { q: "Co je to poikilohydrie?", options: ["Schopnost regulovat vodu", "Neschopnost regulovat vodu (závislost na okolí)", "Dýchání pod vodou"], correct: 1 },
+                    { q: "Která část tobolky zajišťuje postupné uvolňování výtrusů?", options: ["Operculum", "Peristom (obústí)", "Calyptra"], correct: 1 },
+                    { q: "Která fáze životního cyklu je u mechů dominantní?", options: ["Sporofyt (2n)", "Gametofyt (n)", "Zygota"], correct: 1 },
+                    { q: "Jaký ekologický význam má Sphagnum?", options: ["Fixace dusíku", "Sekvestrace uhlíku v rašeliništích", "Tvorba humusu"], correct: 1 }
                 ]
             },
             kapradorosty: {
-                title: "🌿 KAPRAĎOROSTY",
-                questions: [
-                    { q: "Co mají kapraďorosty?", options: ["Jen listy", "Cévy a peřité listy", "Květy"], correct: 1 },
-                    { q: "Jak se rozmnožují?", options: ["Semeny", "Výtrusy", "Cibulkami"], correct: 1 },
-                    { q: "Jakou strukturu mají?", options: ["Bez kořenů", "S pravými kořeny a cévami", "Jen folie"], correct: 1 }
+                title: "🌿 KAPRAĎOROSTY (9. ročník)",
+                pool: [
+                    { q: "Který polymer v buněčných stěnách umožňuje kapradinám růst do výšky?", options: ["Celulóza", "Lignin", "Chitin"], correct: 1 },
+                    { q: "Jak se nazývá srdčitý, nezávislý gametofyt kapradin?", options: ["Protonema", "Prothallus (prokel)", "Oddenek"], correct: 1 },
+                    { q: "Co jsou to megafyly?", options: ["Malé listy s jednou žilkou", "Velké listy s komplexní žilnatinou", "Kořenové vlásky"], correct: 1 },
+                    { q: "Který typ stélé je rozdělen na jednotlivé svazky oddělené mezerami?", options: ["Sifonostélé", "Protostélé", "Diktyostélé"], correct: 2 },
+                    { q: "Co je to indusium (ostěra)?", options: ["Typ kořene", "Membrána chránící výtrusné kupky", "Látka v listech"], correct: 1 }
                 ]
             },
             nahosemenne: {
-                title: "🌲 NAHOSEMENNÉ",
-                questions: [
-                    { q: "Co je typické?", options: ["Mají květy", "Semena bez obalu", "Jen listy"], correct: 1 },
-                    { q: "Příklad?", options: ["Jablko", "Smrk", "Jahoda"], correct: 1 },
-                    { q: "Kde zrají semena?", options: ["V květech", "V šiškách", "V zemi"], correct: 1 }
+                title: "🌲 NAHOSEMENNÉ (9. ročník)",
+                pool: [
+                    { q: "Co je to sifonogamie?", options: ["Oplození pomocí vody", "Doprava gamet k vajíčku pylovou láčkou", "Rozmnožování oddenky"], correct: 1 },
+                    { q: "Které pletivo zajišťuje sekundární tloustnutí stonku?", options: ["Vaskulární kambium", "Floém", "Endodermis"], correct: 0 },
+                    { q: "Jaký je původ endospermu u nahosemenných?", options: ["Triploidní (po oplození)", "Haploidní (před oplozením)", "Diploidní"], correct: 1 },
+                    { q: "Která skupina nahosemenných má cévy (tracheje) v dřevě?", options: ["Jehličnany", "Liánovcotvaré (Gnetophyta)", "Cykasy"], correct: 1 },
+                    { q: "Jak dlouho může trvat interval mezi opylením a oplozením u borovice?", options: ["1 hodinu", "1 týden", "12 až 15 měsíců"], correct: 2 }
                 ]
             },
             krytosemenne: {
-                title: "🌻 KRYTOSEMENNÉ",
-                questions: [
-                    { q: "Co mají krytosemenné?", options: ["Jen listy", "Květy a plody", "Jen kořeny"], correct: 1 },
-                    { q: "Na kolik skupin se dělí?", options: ["1", "2", "3"], correct: 1 },
-                    { q: "Příklad?", options: ["Smrk", "Jablko", "Borovice"], correct: 1 }
+                title: "🌻 KRYTOSEMENNÉ (9. ročník)",
+                pool: [
+                    { q: "Co vzniká procesem triple fúze při dvojitém oplození?", options: ["Zygota (2n)", "Endosperm (3n)", "Osemení"], correct: 1 },
+                    { q: "Které geny podle modelu ABC určují vznik korunních lístků?", options: ["Jen A", "A + B", "B + C"], correct: 1 },
+                    { q: "Jak se nazývají pokročilé vodivé buňky xylému?", options: ["Tracheidy", "Tracheje (cévy)", "Sítkovice"], correct: 1 },
+                    { q: "Které buňky metabolicky podporují bezjaderné sítkovice?", options: ["Průvodní buňky", "Scleridní buňky", "Epidermální buňky"], correct: 0 },
+                    { q: "Proč Darwin nazval vzestup krytosemenných 'odpornou záhadou'?", options: ["Protože jsou jedovaté", "Kvůli jejich náhlé a rychlé diverzifikaci", "Protože nemají šišky"], correct: 1 }
                 ]
             }
         };
 
         let currentTest = null;
+        let activeQuestions = [];
 
         function openTest(testId) {
             currentTest = testId;
-            const test = tests[testId];
-            document.getElementById('testTitle').textContent = test.title;
+            const testData = tests[testId];
+            document.getElementById('testTitle').textContent = testData.title;
+            
+            // AI-like Randomization: Pick 3 random questions from the pool
+            activeQuestions = [...testData.pool]
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 3);
             
             let html = '';
-            test.questions.forEach((q, i) => {
+            activeQuestions.forEach((q, i) => {
                 html += `<div class="test-q">
                     <strong>${i + 1}. ${q.q}</strong>`;
                 q.options.forEach((opt, j) => {
@@ -329,8 +353,7 @@
         }
 
         function submitTest() {
-            const test = tests[currentTest];
-            test.questions.forEach((q, i) => {
+            activeQuestions.forEach((q, i) => {
                 const selected = document.querySelector(`input[name="q${i}"]:checked`);
                 const feedback = document.getElementById(`feedback${i}`);
                 
@@ -341,7 +364,7 @@
                     feedback.textContent = '✅ Správně!';
                     feedback.className = 'feedback correct show';
                 } else {
-                    feedback.textContent = '❌ Špatně! Zkus znovu.';
+                    feedback.textContent = `❌ Špatně! Správná odpověď byla: ${q.options[q.correct]}`;
                     feedback.className = 'feedback wrong show';
                 }
             });
