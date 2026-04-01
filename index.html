@@ -146,7 +146,7 @@
         <div class="nadrazena">
             <h2>🌿 BOTANIKA 🌿</h2>
             <div class="tema-grid">
-                <div class="tema">
+                <div class="tema" onclick="location.href='mechorosty.html'">
                     <div class="icon">🌱</div>
                     <h3>Mechorosty</h3>
                     <div class="popis">Nižší rostliny bez pravých vodivých pletiv a cévních svazků. Nemají pravé kořeny. Rostou na vlhkých místech. Rozmnožují se výtrusy.</div>
@@ -156,7 +156,10 @@
                         🌱 Jezovec jednotahý<br>
                         🌱 Játrovka třídílná
                     </div>
-                    <button onclick="openTest('mechorosty')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('mechorosty')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='mechorosty.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
                 <div class="tema">
