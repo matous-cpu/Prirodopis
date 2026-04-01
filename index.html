@@ -194,7 +194,7 @@
                     </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='krytosemenne.html'">
                     <div class="icon">🌻</div>
                     <h3>Krytosemenné rostliny</h3>
                     <div class="popis">NEJNOVĚJŠÍ VELKÝCH SKUPIN ROSTLIN! Mají květy a semena chráněná v semenících a plodech. Nejpočetnější skupina rostlin!</div>
@@ -204,7 +204,10 @@
                         🌹 Růže šípková<br>
                         🌽 Kukuřice setá
                     </div>
-                    <button onclick="openTest('krytosemenne')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('krytosemenne')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='krytosemenne.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
             </div>
         </div>
