@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='savci.html'">
                     <div class="icon">🦁</div>
                     <h3>Savci</h3>
                     <div class="popis">Teplokrevní obratlovci se srstí a mléčnými žlázami. Mají čtyřdílné srdce a stálou teplotu. Drtivá majorita rodí živá mláďata.</div>
@@ -134,7 +134,10 @@
                         🐻 Medvěd hnědý<br>
                         🐺 Vlk obecný
                     </div>
-                    <button onclick="openTest('savci')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('savci')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='savci.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
             </div>
         </div>
