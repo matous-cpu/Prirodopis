@@ -60,7 +60,7 @@
         <div class="nadrazena">
             <h2>🦴 STRUNATCI 🦴</h2>
             <div class="tema-grid">
-                <div class="tema">
+                <div class="tema" onclick="location.href='ryby.html'">
                     <div class="icon">🐠</div>
                     <h3>Ryby</h3>
                     <div class="popis">Nejstarší a druhově nejpočetnější skupinou obratlovců. Dýchají žábrami, mají tělo pokryté šupinami. Jsou studenokrevné. Rozmnožují se kladením jiker.</div>
@@ -70,10 +70,13 @@
                         🐟 Pstruh obecný<br>
                         🦈 Žralok bílý
                     </div>
-                    <button onclick="openTest('ryby')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('ryby')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='ryby.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='obojzivelnici.html'">
                     <div class="icon">🐸</div>
                     <h3>Obojživelníci</h3>
                     <div class="popis">Studenokrevní obratlovci mezi vodou a souší. Larvy (pulci) dýchají žábrami, dospělci plícemi a kůží. Procházejí metamorfózou.</div>
@@ -83,10 +86,13 @@
                         🐸 Ropucha obecná<br>
                         🦎 Čoltek obecný
                     </div>
-                    <button onclick="openTest('obojziv')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('obojziv')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='obojzivelnici.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='plazi.html'">
                     <div class="icon">🐍</div>
                     <h3>Plazi</h3>
                     <div class="popis">Studenokrevní obratlovci s tělem pokrytým rohovitými šupinami. Dýchají jen plícemi. Rozmnožují se vejci nebo živě.</div>
@@ -96,10 +102,13 @@
                         🦎 Ještěr obecný<br>
                         🐢 Želva bahenní
                     </div>
-                    <button onclick="openTest('plazi')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('plazi')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='plazi.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='ptaci.html'">
                     <div class="icon">🦅</div>
                     <h3>Ptáci</h3>
                     <div class="popis">Teplokrevní obratlovci s peřím. Mají zobák bez zubů. Stálá teplota okolo 40°C. Většina umí létat.</div>
@@ -109,7 +118,10 @@
                         🦅 Jestřáb lesní<br>
                         🐦 Sojka obecná
                     </div>
-                    <button onclick="openTest('ptaci')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('ptaci')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='ptaci.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
                 <div class="tema">
