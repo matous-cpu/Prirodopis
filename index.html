@@ -178,7 +178,7 @@
                     </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='nahosemenne.html'">
                     <div class="icon">🌲</div>
                     <h3>Nahosemenné rostliny</h3>
                     <div class="popis">Staré semenné rostliny - patří sem jehličnany. Semena bez ochranného obalu, leží nahá. Semena zrají v šiškách.</div>
@@ -188,7 +188,10 @@
                         🌲 Borovice lesní<br>
                         🌲 Modřín evropský
                     </div>
-                    <button onclick="openTest('nahosemenne')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('nahosemenne')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='nahosemenne.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
                 <div class="tema">
