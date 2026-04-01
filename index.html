@@ -162,7 +162,7 @@
                     </div>
                 </div>
 
-                <div class="tema">
+                <div class="tema" onclick="location.href='kapradorosty.html'">
                     <div class="icon">🌿</div>
                     <h3>Kapraďorosty</h3>
                     <div class="popis">Výtrusné cévnaté rostliny s prvními pravými kořeny a cévami! Mají složité peřité listy. Rozmnožují se výtrusy.</div>
@@ -172,7 +172,10 @@
                         🌿 Pryšec přílivý<br>
                         🌿 Přeslička polní
                     </div>
-                    <button onclick="openTest('kapradorosty')">📝 Test</button>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('kapradorosty')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='kapradorosty.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
                 </div>
 
                 <div class="tema">
