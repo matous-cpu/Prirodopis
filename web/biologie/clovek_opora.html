@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soustava opěrná a pohybová - Člověk, obraz Boží</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #e0eafc; overflow-x: hidden; position: relative; padding: 20px; color: #333; }
+        header { background: linear-gradient(135deg, #3498db, #2980b9); position: relative; z-index: 1; color: white; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        h2 { color: #2980b9; font-size: 1.8em; margin-bottom: 20px; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-top: 30px; }
+        h3 { color: #3498db; margin: 25px 0 15px 0; font-size: 1.4em; }
+        p { line-height: 1.7; margin-bottom: 15px; font-size: 1.1em; }
+        ul, ol { margin-bottom: 20px; padding-left: 30px; }
+        li { margin-bottom: 10px; line-height: 1.6; font-size: 1.05em; }
+        li strong { color: #2980b9; }
+        .back-link { display: inline-block; margin-top: 30px; color: #2980b9; text-decoration: none; font-weight: bold; }
+        .back-link:hover { text-decoration: underline; }
+        .highlight { background: #e3f2fd; padding: 20px; border-left: 5px solid #3498db; border-radius: 5px; margin: 20px 0; }
+        .spiritual-box { background: #fff9db; padding: 20px; border-left: 5px solid #f1c40f; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .spiritual-box h4 { color: #d4ac0d; margin-bottom: 10px; font-style: normal; }
+        .dictionary-box { background: #f4f6f7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #dee2e6; }
+        .dictionary-box h4 { color: #7f8c8d; margin-bottom: 10px; }
+        .bg-circles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; } 
+        .circle { position: absolute; background: rgba(52, 152, 219, 0.1); border-radius: 50%; animation: float 20s infinite linear; } 
+        @keyframes float { 
+            0% { transform: translateY(100vh) scale(0); opacity: 0; } 
+            50% { opacity: 0.5; } 
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; } 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🦴 Soustava opěrná a pohybová 🏃</h1>
+        <p>Obdivujeme úžasnou stavbu lidského těla</p>
+    </header>
+
+    <div class="bg-circles" id="bgCircles"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+        <a href="index.html" class="back-link">← Zpět na přehled témat</a>
+
+        <div class="spiritual-box">
+            <h4>🙏 Duchovní okénko</h4>
+            "Chválím tě, že jsem vznikl tak podivuhodně, žasnu nad tvými divy, má duše to dobře ví." (Žalm 139,14)
+            Lidské tělo je mistrovským dílem. Kostra nám dává oporu a svaly sílu k pohybu, abychom mohli konat dobro a sloužit druhým.
+        </div>
+
+        <h2>1. Kostra – pevný základ těla</h2>
+        <p>Kostra dospělého člověka se skládá z 206 kostí. Kosti jsou živé orgány, které neustále přestavují svou strukturu podle zátěže.</p>
+        
+        <h3>Složení a růst kosti</h3>
+        <p>Kostní tkáň tvoří **organické látky** (ossein – dodává pružnost) a **anorganické látky** (vápník, fosfor – dodávají pevnost). U dětí převažují organické látky, proto jsou jejich kosti pružnější a méně lámavé.</p>
+
+        <div class="dictionary-box">
+            <h4>📖 Slovníček pojmů</h4>
+            <ul>
+                <li><strong>Okostice:</strong> Vazivová blána na povrchu kosti, zajišťuje výživu a růst kosti do šířky.</li>
+                <li><strong>Růstová chrupavka:</strong> Vrstva mezi tělem a konci dlouhých kostí, umožňuje růst kosti do délky (u kluků do cca 20 let, u holek do 18 let).</li>
+                <li><strong>Kloub:</strong> Pohyblivé spojení kostí kryté chrupavkou a vyplněné kloubním mazem (synovií).</li>
+            </ul>
+        </div>
+
+        <h2>2. Přehled kostry</h2>
+        <ul>
+            <li><strong>Lebka:</strong> Dělí se na mozkovnu (ochrana mozku) a obličejovou část. Jedinou pohyblivou kostí je dolní čelist.</li>
+            <li><strong>Páteř:</strong> Skládá se z 33–34 obratlů (krční, hrudní, bederní, křížové a kostrč). Je dvakrát esovitě prohnutá, což tlumí nárazy při chůzi.</li>
+            <li><strong>Hrudník:</strong> Tvořen 12 páry žeber, hrudní kostí a hrudními obratli.</li>
+            <li><strong>Končetiny:</strong> Horní končetina je uzpůsobena k jemné manipulaci, dolní k chůzi a nesení váhy těla.</li>
+        </ul>
+
+        <h2>3. Svalová soustava</h2>
+        <p>V těle máme přes 600 svalů. Jsou tvořeny svalovými vlákny, která se dokážou zkracovat (kontrakce).</p>
+        <ul>
+            <li><strong>Kosterní svalstvo:</strong> Příčně pruhovaná tkáň, ovládána vůlí. (např. deltový sval, velký prsní sval, čtyřhlavý sval stehenní).</li>
+            <li><strong>Hladké svalstvo:</strong> Vnitřní orgány, neovládáme vůlí.</li>
+            <li><strong>Srdeční svalstvo:</strong> Unikátní tkáň schopná rytmických stahů po celý život.</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Zajímavost:</strong> Nejsilnějším svalem v poměru k velikosti je žvýkací sval, ale největší práci za celý život vykoná srdce. K vykouzlení úsměvu potřebujeme zapojit 17 svalů, zatímco k zamračení jich musíme použít 43. Usmívat se je tedy mnohem snazší!
+        </div>
+
+        <a href="index.html" class="back-link">← Zpět na přehled témat</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Boží příroda - Vzdělávací portál pro žáky 8. ročníku</p>
+    </footer>
+
+    <script> 
+        const bg = document.getElementById("bgCircles"); 
+        for(let i = 0; i < 15; i++) { 
+            const circle = document.createElement("div"); 
+            circle.className = "circle"; 
+            const size = Math.random() * 100 + 50; 
+            circle.style.width = size + "px"; 
+            circle.style.height = size + "px"; 
+            circle.style.left = Math.random() * 100 + "vw"; 
+            circle.style.animationDuration = (Math.random() * 10 + 10) + "s"; 
+            circle.style.animationDelay = (Math.random() * 5) + "s"; 
+            bg.appendChild(circle); 
+        } 
+    </script>
+</body>
+</html>

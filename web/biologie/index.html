@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hravý přírodopis 9</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #e0eafc; padding: 20px; overflow-x: hidden; position: relative; }
+        
+        /* Dynamic Background */
+        .bg-circles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .circle { position: absolute; background: rgba(52, 152, 219, 0.1); border-radius: 50%; animation: float 20s infinite linear; }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+        }
+
+        header { background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3); }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        
+        .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        
+        .nadrazena { background: rgba(255, 255, 255, 0.9); padding: 30px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); backdrop-filter: blur(5px); }
+        .nadrazena h2 { color: #2980b9; font-size: 2em; margin-bottom: 20px; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        
+        .tema-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        
+        .tema { background: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db; cursor: pointer; transition: all 0.3s; }
+        .tema:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-3px); background: white; }
+        .tema h3 { color: #2980b9; margin-bottom: 10px; font-size: 1.3em; }
+        .tema .icon { font-size: 2em; margin-bottom: 10px; }
+        .tema .popis { color: #555; line-height: 1.5; margin-bottom: 15px; font-size: 0.95em; }
+        .tema .druhy { background: #e3f2fd; padding: 10px; border-radius: 5px; margin: 10px 0; font-size: 0.9em; }
+        .tema .druhy strong { color: #2980b9; display: block; margin-bottom: 5px; }
+        
+        button { background: #3498db; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9em; transition: background 0.3s; }
+        button:hover { background: #2980b9; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .modal.show { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
+        .modal-content h2 { color: #2980b9; margin-bottom: 20px; }
+        
+        .test-q { background: #f0f7ff; padding: 15px; margin: 15px 0; border-radius: 5px; border-left: 3px solid #3498db; }
+        .test-q strong { display: block; margin-bottom: 12px; color: #2980b9; }
+        .test-q label { display: block; margin: 8px 0; cursor: pointer; }
+        .test-q input { margin-right: 10px; }
+        
+        .feedback { margin-top: 10px; font-weight: bold; padding: 10px; border-radius: 5px; display: none; }
+        .feedback.show { display: block; }
+        .feedback.correct { background: #d4edda; color: #155724; }
+        .feedback.wrong { background: #f8d7da; color: #721c24; }
+        .close { position: absolute; top: 15px; right: 15px; font-size: 28px; cursor: pointer; color: #999; }
+        
+        footer { text-align: center; padding: 20px; color: #666; margin-top: 50px; }
+        .submit-test { width: 100%; margin-top: 15px; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+    <div class="bg-circles" id="bgCircles"></div>
+    <header>
+        <h1>🙏 Boží příroda 8 🌿</h1>
+        <p>Poznáváme krásu a řád stvořeného světa</p>
+    </header>
+
+    <script>
+        // Generate dynamic background circles
+        const bg = document.getElementById('bgCircles');
+        for(let i = 0; i < 15; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            const size = Math.random() * 100 + 50;
+            circle.style.width = size + 'px';
+            circle.style.height = size + 'px';
+            circle.style.left = Math.random() * 100 + 'vw';
+            circle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            circle.style.animationDelay = (Math.random() * 5) + 's';
+            bg.appendChild(circle);
+        }
+    </script>
+
+    <div class="container">
+        <a href="../index.html" style="display: inline-block; margin-bottom: 20px; color: #2980b9; text-decoration: none; font-weight: bold;">← Zpět na hlavní portál</a>
+        <!-- STRUNATCI -->
+        <div class="nadrazena">
+            <h2>🦴 STRUNATCI 🦴</h2>
+            <div class="tema-grid">
+                <div class="tema" onclick="location.href='ryby.html'">
+                    <div class="icon">🐠</div>
+                    <h3>Ryby</h3>
+                    <div class="popis">Studium hydrodynamiky, žaberního dýchání, postranní čáry a významu plynového měchýře.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🐠 Kapr obecný (všežravec)<br>
+                        🐟 Pstruh obecný (čisté vody)<br>
+                        🦈 Žralok bílý (chrupavčitá kostra)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('ryby')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='ryby.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='obojzivelnici.html'">
+                    <div class="icon">🐸</div>
+                    <h3>Obojživelníci</h3>
+                    <div class="popis">Metamorfóza z pulce na dospělce, kombinace plicního a kožního dýchání, život v obou prostředích.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🐸 Žába zelená (bezocasí)<br>
+                        🦎 Čolek obecný (ocasatí)<br>
+                        🦎 Mlok skvrnitý (jedové žlázy)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('obojziv')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='obojzivelnici.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='plazi.html'">
+                    <div class="icon">🐍</div>
+                    <h3>Plazi</h3>
+                    <div class="popis">Ektotermie, význam amniotického vejce pro suchozemský vývoj, keratinizace kůže a svlékání.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🐍 Užovka obojková (beznohá)<br>
+                        🦎 Ještěrka obecná (autotomie)<br>
+                        🐢 Želva bahenní (krunýř)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('plazi')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='plazi.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='ptaci.html'">
+                    <div class="icon">🦅</div>
+                    <h3>Ptáci</h3>
+                    <div class="popis">Aerodynamika letu, jednosměrné proudění vzduchu v plících, vzdušné vaky a stavba peří.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🦅 Orel královský (dravec)<br>
+                        🐦 Sojka obecná (pěvec)<br>
+                        🦆 Kachna divoká (nidifugní)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('ptaci')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='ptaci.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='savci.html'">
+                    <div class="icon">🦁</div>
+                    <h3>Savci</h3>
+                    <div class="popis">Neokortex, heterodontní chrup, mléčné žlázy a vývoj mláďat pomocí placenty.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🦁 Lev africký (šelma)<br>
+                        🐋 Velryba (vodní savec)<br>
+                        🦘 Klokan (vačnatec)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('savci')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='savci.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTANIKA -->
+        <div class="nadrazena">
+            <h2>🌱 ROSTLINY 🌱</h2>
+            <div class="tema-grid">
+                <div class="tema" onclick="location.href='mechorosty.html'">
+                    <div class="icon">🌱</div>
+                    <h3>Mechorosty</h3>
+                    <div class="popis">Bezcévné rostliny, poikilohydrie, dominance gametofytu a význam v koloběhu vody.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🌱 Rašeliník (tvorba rašeliny)<br>
+                        🌱 Ploník ztepilý (vysoká lodyžka)<br>
+                        🌱 Bělomech modravý (indikátor sucha)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('mechorosty')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='mechorosty.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='kapradorosty.html'">
+                    <div class="icon">🌿</div>
+                    <h3>Kapraďorosty</h3>
+                    <div class="popis">Cévnaté rostliny, role ligninu, rodozměna s převahou sporofytu a význam oddenků.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🌿 Kapraď samec (výtrusné kupky)<br>
+                        🌿 Přeslička rolní (křemík v buňkách)<br>
+                        🌿 Plavuň vidlačka (horské lesy)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('kapradorosty')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='kapradorosty.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='nahosemenne.html'">
+                    <div class="icon">🌲</div>
+                    <h3>Nahosemenné</h3>
+                    <div class="popis">Vznik semene a pylové láčky, sekundární tloustnutí dřeva a stavba šištic.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🌲 Smrk ztepilý (hospodářský význam)<br>
+                        🌲 Borovice lesní (odolnost)<br>
+                        🌲 Jinan dvoulaločný (živoucí fosilie)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('nahosemenne')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='nahosemenne.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='krytosemenne.html'">
+                    <div class="icon">🌻</div>
+                    <h3>Krytosemenné</h3>
+                    <div class="popis">Dvojité oplození, koevoluce s hmyzem, rozdíly mezi jednoděložnými a dvouděložnými.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🌻 Slunečnice roční (dvouděložná)<br>
+                        🌾 Pšenice (jednoděložná)<br>
+                        🍎 Jabloň domácí (dužnatý plod)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('krytosemenne')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='krytosemenne.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MIKROBIOLOGIE -->
+        <div class="nadrazena">
+            <h2>🔬 MIKROBIOLOGIE 🦠</h2>
+            <div class="tema-grid">
+                <div class="tema" onclick="location.href='mikrobiologie.html'">
+                    <div class="icon">🔬</div>
+                    <h3>Mikrobiologie</h3>
+                    <div class="popis">Stavba prokaryotické buňky, kultivace bakterií, vnitrobuněčný parazitismus virů a historie objevů.</div>
+                    <div class="druhy">
+                        <strong>Co zkoumá:</strong>
+                        🦠 Bakterie (nukleoid, plazmidy)<br>
+                        🧬 Viry (kapsida, genetická info)<br>
+                        🧫 Metody (pasterizace, agar)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('mikro')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='mikrobiologie.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOUBY -->
+        <div class="nadrazena">
+            <h2>🍄 HOUBY 🍄</h2>
+            <div class="tema-grid">
+                <div class="tema" onclick="location.href='houby.html'">
+                    <div class="icon">🍄</div>
+                    <h3>Říše hub</h3>
+                    <div class="popis">Buněčná stěna z chitinu, podhoubí (mycelium), saprofytismus a význam mykorhizy pro les.</div>
+                    <div class="druhy">
+                        <strong>Příklady:</strong>
+                        🍄 Hřib smrkový (stopkovýtrusná)<br>
+                        🍄 Muchomůrka zelená (jedovatá)<br>
+                        🧪 Štětičkovec (výroba penicilinu)
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('houby')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='houby.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BIOLOGIE ČLOVĚKA -->
+        <div class="nadrazena">
+            <h2>👤 BIOLOGIE ČLOVĚKA 👤</h2>
+            <div class="tema-grid">
+                <div class="tema" onclick="location.href='clovek_opora.html'">
+                    <div class="icon">🦴</div>
+                    <h3>Opora a pohyb</h3>
+                    <div class="popis">Kostra a svaly - úžasný systém, který nám dává tvar a sílu.</div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('clovek_opora')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='clovek_opora.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='clovek_obeh.html'">
+                    <div class="icon">❤️</div>
+                    <h3>Oběh a dýchání</h3>
+                    <div class="popis">Jak v našem těle proudí krev a jak přijímáme dech života.</div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('clovek_obeh')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='clovek_obeh.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='clovek_travic.html'">
+                    <div class="icon">🍏</div>
+                    <h3>Trávení a vylučování</h3>
+                    <div class="popis">Cesta potravy naším tělem a čištění krve v ledvinách.</div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('clovek_travic')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='clovek_travic.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+
+                <div class="tema" onclick="location.href='clovek_nervy.html'">
+                    <div class="icon">🧠</div>
+                    <h3>Nervy a smysly</h3>
+                    <div class="popis">Jak náš mozek řídí tělo a jak vnímáme krásu světa kolem nás.</div>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="event.stopPropagation(); openTest('clovek_nervy')">📝 Test</button>
+                        <button onclick="event.stopPropagation(); location.href='clovek_nervy.html'" style="background: #3498db;">ℹ️ Více info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PRO TESTY -->
+    <div id="testModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTest()">&times;</span>
+            <h2 id="testTitle">Test</h2>
+            <div id="testContent"></div>
+            <button class="submit-test" onclick="submitTest()">Zkontrolovat odpovědi</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hravý přírodopis 9 - Interaktivní učebnice</p>
+    </footer>
+
+    <script>
+        const tests = {
+            ryby: {
+                title: "🐠 BIOLOGIE RYB (8. ročník)",
+                pool: [
+                    { q: "Čím dýchají ryby pod vodou?", options: ["Plícemi", "Žábrami", "Kůží"], correct: 1 },
+                    { q: "K čemu slouží rybě plynový měchýř?", options: ["K dýchání", "Aby se mohla vznášet ve vodě", "K trávení potravy"], correct: 1 },
+                    { q: "Která část srdce ryb vyrovnává krevní tlak?", options: ["Síň", "Komora", "Tepenný násadec"], correct: 2 },
+                    { q: "Co detekuje postranní čára?", options: ["Teplotu vody", "Vibrace a proudění vody", "Barvu světla"], correct: 1 },
+                    { q: "Mají paryby (žraloci) plynový měchýř?", options: ["Ano", "Ne", "Jen některé"], correct: 1 }
+                ]
+            },
+            obojziv: {
+                title: "🐸 BIOLOGIE OBOJŽIVELNÍKŮ (8. ročník)",
+                pool: [
+                    { q: "Jak se jmenuje úžasná proměna pulce v žábu?", options: ["Metamorfóza", "Fotosyntéza", "Hibernace"], correct: 0 },
+                    { q: "Který dar mají dospělé žáby navíc k dýchání plícemi?", options: ["Dýchání uší", "Dýchání kůží", "Dýchání ocasem"], correct: 1 },
+                    { q: "Kolik částí má srdce dospělé žáby?", options: ["2", "3", "4"], correct: 1 },
+                    { q: "Kdo patří mezi ocasaté obojživelníky?", options: ["Ropucha", "Čolek", "Rosnička"], correct: 1 },
+                    { q: "Kde začíná život většiny obojživelníků?", options: ["V lese", "Ve vodě", "Na poušti"], correct: 1 }
+                ]
+            },
+            plazi: {
+                title: "🐍 BIOLOGIE PLAZŮ (8. ročník)",
+                pool: [
+                    { q: "Proč mají plazi suchou kůži se šupinami?", options: ["Aby se jim lépe plavalo", "Aby jim z těla neutíkala voda", "Aby byli barevní"], correct: 1 },
+                    { q: "Jak plazi vnímají pachy pomocí jazyka?", options: ["Jacobsonovým orgánem", "Uchem", "Očima"], correct: 0 },
+                    { q: "Která část vajíčka chrání mládě před vyschnutím?", options: ["Žloutek", "Amnion", "Skořápka"], correct: 1 },
+                    { q: "Jsou plazi závislí na teplotě okolí (ektotermní)?", options: ["Ano", "Ne", "Jen v zimě"], correct: 0 },
+                    { q: "Která skupina plazů má krunýř?", options: ["Ještěři", "Želvy", "Krokodýli"], correct: 1 }
+                ]
+            },
+            ptaci: {
+                title: "🦅 BIOLOGIE PTÁKŮ (8. ročník)",
+                pool: [
+                    { q: "Který systém pomáhá ptákům dýchat i při výdechu?", options: ["Svaly", "Vzdušné vaky", "Zobák"], correct: 1 },
+                    { q: "Jak se jmenuje smysl, kterým ptáci vnímají magnetické pole Země?", options: ["Magnetorecepce", "Zrak", "Sluch"], correct: 0 },
+                    { q: "Z čeho je tvořen ptačí zobák?", options: ["Z kostí", "Z rohoviny", "Z kůže"], correct: 1 },
+                    { q: "Který sval je nejdůležitější pro létání?", options: ["Prsní sval", "Zádový sval", "Nožní sval"], correct: 0 },
+                    { q: "Mají ptáci stálou tělesnou teplotu?", options: ["Ano", "Ne", "Jen v létě"], correct: 0 }
+                ]
+            },
+            savci: {
+                title: "🦁 BIOLOGIE SAVCŮ (8. ročník)",
+                pool: [
+                    { q: "Čím se živí mláďata savců po narození?", options: ["Trávou", "Mateřským mlékem", "Hmyzem"], correct: 1 },
+                    { q: "Který orgán vyživuje mládě v těle matky?", options: ["Placenta", "Srdce", "Žaludek"], correct: 0 },
+                    { q: "Která část mozku je zodpovědná za myšlení?", options: ["Mozeček", "Neokortex", "Mícha"], correct: 1 },
+                    { q: "Kdo patří mezi vejcorodé savce?", options: ["Klokan", "Ptakopysk", "Velryba"], correct: 1 },
+                    { q: "Kolik částí má srdce savců?", options: ["2", "3", "4"], correct: 2 }
+                ]
+            },
+            mechorosty: {
+                title: "🌱 MECHOROSTY (8. ročník)",
+                pool: [
+                    { q: "Proč jsou mechy v lese důležité?", options: ["Zadržují v lese vláhu (vodu)", "Vyrábějí dřevo", "Kvetou barevně"], correct: 0 },
+                    { q: "Mají mechy pravé kořeny?", options: ["Ano", "Ne, mají jen příchytná vlákna", "Mají jen jeden velký kořen"], correct: 1 },
+                    { q: "Čím se rozmnožují mechy?", options: ["Semínky", "Výtrusy", "Květy"], correct: 1 },
+                    { q: "Potřebují mechy k oplození vodu?", options: ["Ano", "Ne", "Jen některé druhy"], correct: 0 },
+                    { q: "Jak se jmenuje zelené vlákno, které vyroste z výtrusu?", options: ["Kořen", "Prvoklíček", "Stonek"], correct: 1 }
+                ]
+            },
+            kapradorosty: {
+                title: "🌿 KAPRAĎOROSTY (8. ročník)",
+                pool: [
+                    { q: "Jak se rozmnožují kapradiny?", options: ["Semínky", "Výtrusy", "Květy"], correct: 1 },
+                    { q: "Kde nejčastěji najdeme kapradiny v přírodě?", options: ["Na suché louce", "Ve stinných a vlhkých lesích", "V poušti"], correct: 1 },
+                    { q: "Jak se jmenuje malé zelené srdíčko, které vyroste z výtrusu kapradiny?", options: ["Prvoklíček", "Prokel", "Oddenek"], correct: 1 },
+                    { q: "Co vzniklo v dávné minulosti z obrovských kapraďových lesů?", options: ["Ropa", "Černé uhlí", "Zemní plyn"], correct: 1 },
+                    { q: "Která látka v těle kapradin jim umožňuje vyrůst do výšky?", options: ["Cukr", "Lignin", "Voda"], correct: 1 }
+                ]
+            },
+            nahosemenne: {
+                title: "🌲 NAHOSEMENNÉ (8. ročník)",
+                pool: [
+                    { q: "Proč zůstávají jehličnany zelené i v zimě?", options: ["Mají voskovou vrstvu na jehlicích", "V zimě rostou rychleji", "Mají v sobě nemrznoucí směs"], correct: 0 },
+                    { q: "V čem mají nahosemenné rostliny ukrytá semínka?", options: ["V šiškách", "V jablkách", "V květech"], correct: 0 },
+                    { q: "Který jehličnan na zimu opadává?", options: ["Smrk", "Modřín", "Jedle"], correct: 1 },
+                    { q: "K čemu slouží stromu pryskyřice (smůla)?", options: ["K dýchání", "K ochraně před škůdci a léčení ran", "K výrobě cukru"], correct: 1 },
+                    { q: "Mají nahosemenné rostliny plody?", options: ["Ano", "Ne, mají jen semena na šupinách", "Jen některé"], correct: 1 }
+                ]
+            },
+            krytosemenne: {
+                title: "🌻 KRYTOSEMENNÉ (8. ročník)",
+                pool: [
+                    { q: "Kde jsou schovaná semínka u krytosemenných rostlin?", options: ["V šiškách", "Uvnitř plodu", "Na povrchu listů"], correct: 1 },
+                    { q: "Co je to opylení?", options: ["Splynutí buněk", "Přenesení pylu na pestík", "Zalévání květin"], correct: 1 },
+                    { q: "Která část rostliny láká hmyz svými barvami?", options: ["Kořen", "Květ", "Stonkem"], correct: 1 },
+                    { q: "Co vznikne z květu po oplození?", options: ["Nový list", "Plod", "Další květ"], correct: 1 },
+                    { q: "Proč jsou pro nás rostliny důležité?", options: ["Vyrábějí kyslík a potravu", "Způsobují déšť", "Vyrábějí elektřinu"], correct: 0 }
+                ]
+            },
+            mikro: {
+                title: "🔬 MIKROBIOLOGIE (8. ročník)",
+                pool: [
+                    { q: "Který přístroj nám dovoluje vidět mikroorganismy?", options: ["Dalekohled", "Mikroskop", "Lupa"], correct: 1 },
+                    { q: "Který vědec první uviděl bakterie pod mikroskopem?", options: ["Louis Pasteur", "Antoni van Leeuwenhoek", "Robert Koch"], correct: 1 },
+                    { q: "Co jsou to patogeny?", options: ["Užitečné bakterie", "Mikroby způsobující nemoci", "Buňky v těle"], correct: 1 },
+                    { q: "Který proces ničí škodlivé mikroby zahřátím?", options: ["Fotosyntéza", "Pasterizace", "Kvašení"], correct: 1 },
+                    { q: "Které mikroorganismy nám pomáhají kynout těsto?", options: ["Viry", "Kvasinky", "Prvoci"], correct: 1 }
+                ]
+            },
+            houby: {
+                title: "🍄 BIOLOGIE HUB (8. ročník)",
+                pool: [
+                    { q: "Mají houby schopnost fotosyntézy?", options: ["Ano, jako rostliny", "Ne, musí potravu přijímat z okolí", "Jen některé zelené druhy"], correct: 1 },
+                    { q: "Jak se nazývá tělo houby ukryté pod zemí?", options: ["Kořeny", "Podhoubí (mycelium)", "Stélka"], correct: 1 },
+                    { q: "Co je to mykorhiza?", options: ["Nemoc stromů způsobená houbami", "Oboustranně výhodné soužití hub a kořenů stromů", "Způsob rozmnožování hub"], correct: 1 },
+                    { q: "Která látka v buněčných stěnách hub je stejná jako u hmyzu?", options: ["Celulóza", "Chitin", "Lignin"], correct: 1 },
+                    { q: "Které houby nám pomáhají při výrobě chleba?", options: ["Plísně", "Kvasinky", "Hřiby"], correct: 1 }
+                ]
+            },
+            clovek_opora: {
+                title: "🦴 OPORA A POHYB (8. ročník)",
+                pool: [
+                    { q: "Kolik kostí má přibližně kostra dospělého člověka?", options: ["Asi 100", "Více než 200", "Přesně 500"], correct: 1 },
+                    { q: "Která část kosti zajišťuje její výživu a růst do šířky?", options: ["Kostní dřeň", "Okostice", "Kloubní chrupavka"], correct: 1 },
+                    { q: "Jak se nazývá pohyblivé spojení kostí?", options: ["Šev", "Kloub", "Spona"], correct: 1 },
+                    { q: "Který sval v našem těle pracuje neustále bez našeho vědomí?", options: ["Biceps", "Srdeční sval", "Žvýkací sval"], correct: 1 },
+                    { q: "Čím jsou svaly připojeny ke kostem?", options: ["Vazy", "Šlachami", "Kůží"], correct: 1 }
+                ]
+            },
+            clovek_obeh: {
+                title: "❤️ OBĚH A DÝCHÁNÍ (8. ročník)",
+                pool: [
+                    { q: "Které cévy vedou okysličenou krev ZE srdce do těla?", options: ["Žíly", "Tepny", "Vlásečnice"], correct: 1 },
+                    { q: "Kolik částí (síní a komor) má lidské srdce?", options: ["2", "3", "4"], correct: 2 },
+                    { q: "Kde v plicích dochází k předávání kyslíku do krve?", options: ["V průdušnici", "V plicních sklípcích", "V hrtanu"], correct: 1 },
+                    { q: "Která složka krve nás chrání před nemocemi (imunita)?", options: ["Červené krvinky", "Bílé krvinky", "Krevní destičky"], correct: 1 },
+                    { q: "Jaký plyn vydechujeme jako odpadní látku?", options: ["Kyslík", "Oxid uhličitý", "Dusík"], correct: 1 }
+                ]
+            },
+            clovek_travic: {
+                title: "🍏 TRÁVENÍ A VYLUČOVÁNÍ (8. ročník)",
+                pool: [
+                    { q: "Ve které části trávicí soustavy se vstřebává nejvíce živin?", options: ["V žaludku", "V tenkém střevě", "V tlustém střevě"], correct: 1 },
+                    { q: "Který orgán čistí krev od odpadních látek a tvoří moč?", options: ["Játra", "Ledviny", "Slezina"], correct: 1 },
+                    { q: "K čemu slouží v těle játra?", options: ["K dýchání", "K čištění krve a výrobě žluči", "K pumpování krve"], correct: 1 },
+                    { q: "Jak se nazývají látky, které v těle urychlují rozklad jídla?", options: ["Hormony", "Enzymy", "Vitamíny"], correct: 1 },
+                    { q: "Kde začíná proces trávení?", options: ["V žaludku", "V ústech", "V jícnu"], correct: 1 }
+                ]
+            },
+            clovek_nervy: {
+                title: "🧠 NERVY A SMYSLY (8. ročník)",
+                pool: [
+                    { q: "Jak se jmenuje základní buňka nervové soustavy?", options: ["Nefron", "Neuron", "Osteocyt"], correct: 1 },
+                    { q: "Který orgán je hlavním řídicím centrem těla?", options: ["Srdce", "Mozek", "Plíce"], correct: 1 },
+                    { q: "Jak se nazývá automatická a rychlá odpověď těla na podnět?", options: ["Myšlenka", "Reflex", "Pocit"], correct: 1 },
+                    { q: "Který smysl je pro člověka nejdůležitější (získáváme jím 80 % informací)?", options: ["Sluch", "Zrak", "Hmat"], correct: 1 },
+                    { q: "Kudy putují signály z těla do mozku a zpět?", options: ["Cévami", "Nervy", "Svaly"], correct: 1 }
+                ]
+            }
+        };
+
+        let currentTest = null;
+        let activeQuestions = [];
+
+        function openTest(testId) {
+            currentTest = testId;
+            const testData = tests[testId];
+            document.getElementById('testTitle').textContent = testData.title;
+            
+            // Randomly pick 3 questions
+            activeQuestions = [...testData.pool]
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 3);
+            
+            let html = '';
+            activeQuestions.forEach((q, i) => {
+                html += `<div class="test-q">
+                    <strong>${i + 1}. ${q.q}</strong>`;
+                q.options.forEach((opt, j) => {
+                    html += `<label style="display: block; margin: 10px 0; cursor: pointer;"><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+                });
+                html += `<div class="feedback" id="feedback${i}"></div></div>`;
+            });
+            
+            document.getElementById('testContent').innerHTML = html;
+            document.getElementById('testModal').classList.add('show');
+        }
+
+        function closeTest() {
+            document.getElementById('testModal').classList.remove('show');
+        }
+
+        function submitTest() {
+            activeQuestions.forEach((q, i) => {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                const feedback = document.getElementById(`feedback${i}`);
+                
+                if (!selected) {
+                    feedback.textContent = '⚠️ Nevybrali jste odpověď!';
+                    feedback.className = 'feedback wrong show';
+                } else if (parseInt(selected.value) === q.correct) {
+                    feedback.textContent = '✅ Správně!';
+                    feedback.className = 'feedback correct show';
+                } else {
+                    feedback.textContent = `❌ Špatně! Správná odpověď: ${q.options[q.correct]}`;
+                    feedback.className = 'feedback wrong show';
+                }
+            });
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('testModal');
+            if (e.target === modal) {
+                closeTest();
+            }
+        }
+    </script>
+</body>
+</html>

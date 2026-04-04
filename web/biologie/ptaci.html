@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ptáci - Mistři nebeských výšin</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #e0eafc; overflow-x: hidden; position: relative; padding: 20px; color: #333; }
+        header { background: linear-gradient(135deg, #3498db, #2980b9); position: relative; z-index: 1; color: white; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        h2 { color: #2980b9; font-size: 1.8em; margin-bottom: 20px; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-top: 30px; }
+        h3 { color: #3498db; margin: 25px 0 15px 0; font-size: 1.4em; }
+        p { line-height: 1.7; margin-bottom: 15px; font-size: 1.1em; }
+        ul, ol { margin-bottom: 20px; padding-left: 30px; }
+        li { margin-bottom: 10px; line-height: 1.6; font-size: 1.05em; }
+        li strong { color: #2980b9; }
+        .back-link { display: inline-block; margin-top: 30px; color: #2980b9; text-decoration: none; font-weight: bold; }
+        .back-link:hover { text-decoration: underline; }
+        .highlight { background: #e3f2fd; padding: 20px; border-left: 5px solid #3498db; border-radius: 5px; margin: 20px 0; }
+        .spiritual-box { background: #fff9db; padding: 20px; border-left: 5px solid #f1c40f; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .spiritual-box h4 { color: #d4ac0d; margin-bottom: 10px; font-style: normal; }
+        .dictionary-box { background: #f4f6f7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #dee2e6; }
+        .dictionary-box h4 { color: #7f8c8d; margin-bottom: 10px; }
+        .bg-circles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; } 
+        .circle { position: absolute; background: rgba(52, 152, 219, 0.1); border-radius: 50%; animation: float 20s infinite linear; } 
+        @keyframes float { 
+            0% { transform: translateY(100vh) scale(0); opacity: 0; } 
+            50% { opacity: 0.5; } 
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; } 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🦅 Ptáci - Svobodní letci pod oblohou ☁️</h1>
+        <p>Žasneme nad lehkostí a krásou ptačího světa</p>
+    </header>
+
+    <div class="bg-circles" id="bgCircles"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+        <a href="index.html" class="back-link">← Zpět na přehled témat</a>
+
+        <div class="spiritual-box">
+            <h4>🙏 Duchovní okénko</h4>
+            "Pohleďte na nebeské ptactvo: nesejí, nežnou, neshromažďují do stodol, a váš nebeský Otec je živí." (Matouš 6,26)
+            Ptáci nám připomínají Boží štědrost a důvěru, kterou můžeme mít v jeho otcovskou péči.
+        </div>
+
+        <h2>1. Adaptace k letu a vnější stavba</h2>
+        <p>Ptáci (Aves) jsou létat schopní, endotermní (teplokrevní) obratlovci. Celá jejich stavba těla je podřízena jedinému cíli: maximální efektivitě letu.</p>
+        
+        <h3>Peří – mistrovské dílo inženýrství</h3>
+        <p>Peří je derivátem kůže tvořeným keratinem. Rozlišujeme peří <strong>obrysové</strong> (krycí, letky na křídlech, rýdovací na ocase) a <strong>prachové</strong> (tepelná izolace). Kostra pera se skládá z brku, ostnu a praporu tvořeného paprsky a háčky.</p>
+
+        <div class="dictionary-box">
+            <h4>📖 Slovníček pojmů</h4>
+            <ul>
+                <li><strong>Endotermie:</strong> Schopnost udržovat stálou tělesnou teplotu nezávisle na okolí.</li>
+                <li><strong>Vzdušné vaky:</strong> Devět blanitých vaků, které zasahují i do dutých kostí. Slouží k ventilaci plic, nadlehčování a ochlazování těla.</li>
+                <li><strong>Pygostyl:</strong> Poslední srostlý ocasní obratel, opora pro rýdovací pera.</li>
+            </ul>
+        </div>
+
+        <h2>2. Vnitřní soustavy a fyziologie</h2>
+        <h3>Dýchací soustava – nejdokonalejší u obratlovců</h3>
+        <p>Ptáci mají malé, málo roztažitelné plíce, ale unikátní systém vzdušných vaků. Vzduch proudí plícemi <strong>jednosměrně</strong> jak při nádechu, tak při výdechu. To zajišťuje neustálý přísun okysličeného vzduchu do plicních kapilár (parabronchií).</p>
+
+        <h3>Oběhová soustava</h3>
+        <p>Srdce je relativně velké a má <strong>čtyři úplně oddělené části</strong> (dvě síně, dvě komory). Krevní oběh je velmi rychlý, což umožňuje vysoký metabolismus nutný pro let. Zachován zůstává <strong>pravý oblouk aorty</strong>.</p>
+
+        <h3>Trávicí soustava</h3>
+        <p>Ptáci nemají zuby (hmotnost!), potravu zpracovávají v <strong>volátku</strong> (změkčení) a následně ve dvou žaludcích: <strong>žláznatém</strong> (chemické trávení) a <strong>svalnatém</strong> (mechanické drcení, často s pomocí spolykaných kamínků – gastrolitů).</p>
+
+        <h2>3. Smysly a nervová soustava</h2>
+        <ul>
+            <li><strong>Zrak:</strong> Nejdokonalejší smysl. Oči jsou velké, mají schopnost dvojité akomodace (změna tvaru čočky i rohovky). Ptáci vidí i v UV spektru.</li>
+            <li><strong>Sluch:</strong> Velmi dobrý, důležitý pro komunikaci zpěvem.</li>
+            <li><strong>Magnetorecepce:</strong> Schopnost vnímat magnetické pole Země pro navigaci při tazích.</li>
+        </ul>
+
+        <h2>4. Rozmnožování a péče o potomstvo</h2>
+        <p>Ptáci mají vnitřní oplození a kladou <strong>vejce s vápenatou skořápkou</strong>. Typická je inkubace vajec tělesným teplem rodičů. Podle stupně vývoje mláďat dělíme ptáky na:</p>
+        <ul>
+            <li><strong>Nidifugní (běhaví):</strong> Mláďata jsou hned po vylíhnutí schopna samostatného pohybu a hledání potravy (např. kachny, kury).</li>
+            <li><strong>Nidikolní (krmiví):</strong> Mláďata jsou holá, slepá a zcela závislá na péči rodičů (např. pěvci, dravci).</li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Zajímavost:</strong> Rorýs obecný dokáže strávit ve vzduchu téměř celý rok bez přistání. Ve vzduchu loví hmyz, pije, a dokonce i spí (střídá spánek polovin mozku). To je neuvěřitelný důkaz výkonnosti jejich těla.
+        </div>
+
+        <a href="index.html" class="back-link">← Zpět na přehled témat</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Boží příroda - Vzdělávací portál pro žáky 8. ročníku</p>
+    </footer>
+
+    <script> 
+        const bg = document.getElementById("bgCircles"); 
+        for(let i = 0; i < 15; i++) { 
+            const circle = document.createElement("div"); 
+            circle.className = "circle"; 
+            const size = Math.random() * 100 + 50; 
+            circle.style.width = size + "px"; 
+            circle.style.height = size + "px"; 
+            circle.style.left = Math.random() * 100 + "vw"; 
+            circle.style.animationDuration = (Math.random() * 10 + 10) + "s"; 
+            circle.style.animationDelay = (Math.random() * 5) + "s"; 
+            bg.appendChild(circle); 
+        } 
+    </script>
+</body>
+</html>

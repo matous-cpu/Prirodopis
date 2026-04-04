@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Boží příroda - Interaktivní Testy</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #e0eafc; overflow-x: hidden; position: relative; }
+        
+        /* Dynamic Background */
+        .bg-circles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .circle { position: absolute; background: rgba(52, 152, 219, 0.1); border-radius: 50%; animation: float 20s infinite linear; }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+        }
+
+        h1 { color: #2980b9; text-align: center; margin-bottom: 10px; position: relative; z-index: 1; }
+        p.subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; position: relative; z-index: 1; font-style: italic; }
+        
+        .tema { background: rgba(255, 255, 255, 0.9); padding: 25px; margin: 20px 0; border-radius: 10px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s; position: relative; z-index: 1; backdrop-filter: blur(5px); border-left: 5px solid #3498db; }
+        .tema:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .tema h2 { color: #2c3e50; margin: 0 0 10px 0; }
+        .popis { line-height: 1.6; color: #555; }
+        
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: opacity 0.3s; }
+        .btn-test { background: #27ae60; color: white; }
+        .btn-info { background: #3498db; color: white; }
+        button:hover { opacity: 0.9; }
+        
+        /* Modal for Tests */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.show { display: flex; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; }
+        .close { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; }
+        .test-q { background: #f0f7ff; padding: 15px; margin: 15px 0; border-radius: 8px; border-left: 4px solid #3498db; }
+        .test-q strong { color: #2980b9; display: block; margin-bottom: 10px; }
+        .test-q label { display: block; margin: 10px 0; cursor: pointer; }
+        .test-q input { margin-right: 10px; }
+        
+        .feedback { margin-top: 10px; padding: 8px; border-radius: 4px; display: none; font-weight: bold; }
+        .feedback.show { display: block; }
+        .feedback.correct { background: #d4edda; color: #155724; }
+        .feedback.wrong { background: #f8d7da; color: #721c24; }
+        
+        .back-link { display: inline-block; margin-bottom: 20px; color: #2980b9; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="bg-circles" id="bgCircles"></div>
+    <a href="index.html" class="back-link">← Zpět do učebnice</a>
+    <h1>🙏 Boží příroda - Poznávej a hrej si 🌿</h1>
+    <p class="subtitle">Interaktivní procvičování krásy stvořeného světa</p>
+    
+    <div id="content-list"></div>
+
+    <div id="testModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTest()">&times;</span>
+            <h2 id="testTitle" style="color: #2c3e50;">Test</h2>
+            <div id="testContent"></div>
+            <button class="btn-test" style="width: 100%; margin-top: 20px;" onclick="submitTest()">Zkontrolovat odpovědi</button>
+        </div>
+    </div>
+
+    <script>
+        // Generate dynamic background circles
+        const bg = document.getElementById('bgCircles');
+        for(let i = 0; i < 15; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            const size = Math.random() * 100 + 50;
+            circle.style.width = size + 'px';
+            circle.style.height = size + 'px';
+            circle.style.left = Math.random() * 100 + 'vw';
+            circle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            circle.style.animationDelay = (Math.random() * 5) + 's';
+            bg.appendChild(circle);
+        }
+
+        const subjects = [
+            { id: 'ryby', title: '🐠 Ryby', file: 'ryby.html', desc: 'Jak ryby dýchají a žijí v hlubinách vodních světů.' },
+            { id: 'obojziv', title: '🐸 Obojživelníci', file: 'obojzivelnici.html', desc: 'Úžasná proměna z pulce v žábu a život na pomezí vody a souše.' },
+            { id: 'plazi', title: '🐍 Plazi', file: 'plazi.html', desc: 'O tom, jak jsou plazi dokonale vybavení pro život na suché zemi.' },
+            { id: 'ptaci', title: '🦅 Ptáci', file: 'ptaci.html', desc: 'Pozoruhodný svět létání a radost z ptačího zpěvu v našich zahradách.' },
+            { id: 'savci', title: '🦁 Savci', file: 'savci.html', desc: 'Nejsložitější tvorové přírody, kteří pečují o svá mláďata.' },
+            { id: 'mechorosty', title: '🌱 Mechorosty', file: 'mechorosty.html', desc: 'Drobné koberce lesa, které zadržují vláhu pro ostatní rostliny.' },
+            { id: 'kapradorosty', title: '🌿 Kapraďorosty', file: 'kapradorosty.html', desc: 'Starobylé rostliny, které zdobí stinná zákoutí.' },
+            { id: 'nahosemenne', title: '🌲 Nahosemenné', file: 'nahosemenne.html', desc: 'Jehličnany, které zůstávají zelené i v zimě.' },
+            { id: 'krytosemenne', title: '🌻 Krytosemenné', file: 'krytosemenne.html', desc: 'Svět květin a stromů, které nám dávají plody a čistý vzduch.' },
+            { id: 'mikro', title: '🔬 Mikrobiologie', file: 'mikrobiologie.html', desc: 'Fascinující svět mikroorganismů, které vidíme jen pod mikroskopem.' },
+            { id: 'houby', title: '🍄 Houby', file: 'houby.html', desc: 'Skrytí obyvatelé lesa, kteří nejsou ani rostlinami, ani živočichy.' },
+            { id: 'clovek_opora', title: '🦴 Opora a pohyb', file: 'clovek_opora.html', desc: 'Kostra a svaly - úžasný systém, který nám dává tvar a sílu.' },
+            { id: 'clovek_obeh', title: '❤️ Oběh a dýchání', file: 'clovek_obeh.html', desc: 'Jak v našem těle proudí krev a jak přijímáme dech života.' },
+            { id: 'clovek_travic', title: '🍏 Trávení a vylučování', file: 'clovek_travic.html', desc: 'Cesta potravy naším tělem a čištění krve v ledvinách.' },
+            { id: 'clovek_nervy', title: '🧠 Nervy a smysly', file: 'clovek_nervy.html', desc: 'Jak náš mozek řídí tělo a jak vnímáme krásu světa kolem nás.' }
+        ];
+
+        const testPools = {
+            ryby: [
+                { q: "Čím dýchají ryby pod vodou?", options: ["Plícemi", "Žábrami", "Kůží"], correct: 1 },
+                { q: "K čemu slouží rybě plynový měchýř?", options: ["K dýchání", "Aby se mohla vznášet ve vodě", "K trávení potravy"], correct: 1 }
+            ],
+            obojziv: [
+                { q: "Jak se jmenuje úžasná proměna pulce v žábu?", options: ["Metamorfóza", "Fotosyntéza", "Hibernace"], correct: 0 },
+                { q: "Který dar mají dospělé žáby navíc k dýchání plícemi?", options: ["Dýchání uší", "Dýchání kůží", "Dýchání ocasem"], correct: 1 }
+            ],
+            plazi: [
+                { q: "Proč mají plazi suchou kůži se šupinami?", options: ["Aby se jim lépe plavalo", "Aby jim z těla neutíkala voda", "Aby byli barevní"], correct: 1 },
+                { q: "Jak plazi vnímají pachy pomocí jazyka?", options: ["Jacobsonovým orgánem", "Uchem", "Očima"], correct: 0 }
+            ],
+            ptaci: [
+                { q: "Který systém pomáhá ptákům dýchat i při výdechu?", options: ["Svaly", "Vzdušné vaky", "Zobák"], correct: 1 },
+                { q: "Jak se jmenuje smysl, kterým ptáci vnímají magnetické pole Země?", options: ["Magnetorecepce", "Zrak", "Sluch"], correct: 0 }
+            ],
+            savci: [
+                { q: "Čím se živí mláďata savců po narození?", options: ["Trávou", "Mateřským mlékem", "Hmyzem"], correct: 1 },
+                { q: "Který orgán vyživuje mládě placentála v bříšku maminky?", options: ["Žaludek", "Placenta", "Srdce"], correct: 1 }
+            ],
+            mechorosty: [
+                { q: "Proč jsou mechy v lese důležité?", options: ["Zadržují v lese vláhu (vodu)", "Vyrábějí dřevo", "Kvetou barevně"], correct: 0 },
+                { q: "Mají mechy pravé kořeny?", options: ["Ano", "Ne, mají jen příchytná vlákna", "Mají jen jeden velký kořen"], correct: 1 }
+            ],
+            kapradorosty: [
+                { q: "Jak se rozmnožují kapradiny?", options: ["Semínky", "Výtrusy", "Květy"], correct: 1 },
+                { q: "Kde nejčastěji najdeme kapradiny v přírodě?", options: ["Na suché louce", "Ve stinných a vlhkých lesích", "V poušti"], correct: 1 }
+            ],
+            nahosemenne: [
+                { q: "Proč zůstávají jehličnany zelené i v zimě?", options: ["Mají voskovou vrstvu na jehlicích", "V zimě rostou rychleji", "Mají v sobě nemrznoucí směs"], correct: 0 },
+                { q: "V čem mají nahosemenné rostliny ukrytá semínka?", options: ["V šiškách", "V jablkách", "V květech"], correct: 0 }
+            ],
+            krytosemenne: [
+                { q: "Co vyrůstá z květu po oplození?", options: ["List", "Plod se semínky", "Kořen"], correct: 1 },
+                { q: "Která část rostliny láká hmyz svými barvami?", options: ["Kořen", "Květ", "Stonkem"], correct: 1 }
+            ],
+            mikro: [
+                { q: "Který přístroj nám dovoluje vidět mikroorganismy?", options: ["Dalekohled", "Mikroskop", "Lupa"], correct: 1 },
+                { q: "Co jsou to patogeny?", options: ["Užitečné bakterie", "Mikroby způsobující nemoci", "Buňky v těle"], correct: 1 },
+                { q: "Který vědec je otcem pasterizace a vakcín?", options: ["Louis Pasteur", "Antoni van Leeuwenhoek", "Robert Koch"], correct: 0 },
+                { q: "Které mikroorganismy rozkládají v přírodě zbytky rostlin a zvířat?", options: ["Jen viry", "Bakterie a plísně", "Prvoci"], correct: 1 },
+                { q: "Můžeme vidět viry pod běžným školním mikroskopem?", options: ["Ano, snadno", "Ne, jsou příliš malé", "Jen ty největší"], correct: 1 }
+            ],
+            houby: [
+                { q: "Jak se nazývá síť vláken houby pod zemí?", options: ["Kořeny", "Podhoubí (mycelium)", "Stélka"], correct: 1 },
+                { q: "Co je to mykorhiza?", options: ["Soužití hub s kořeny stromů", "Nemoc hub", "Způsob vaření hub"], correct: 0 }
+            ],
+            clovek_opora: [
+                { q: "Kolik kostí má přibližně dospělý člověk?", options: ["Asi 100", "Více než 200", "Přesně 500"], correct: 1 },
+                { q: "Který sval pracuje neustále bez naší vůle?", options: ["Biceps", "Srdeční sval", "Lýtkový sval"], correct: 1 }
+            ],
+            clovek_obeh: [
+                { q: "Které cévy vedou krev ZE srdce?", options: ["Žíly", "Tepny", "Vlásečnice"], correct: 1 },
+                { q: "Kde se v těle okysličuje krev?", options: ["V žaludku", "V plicích", "V játrech"], correct: 1 }
+            ],
+            clovek_travic: [
+                { q: "Kde se vstřebává nejvíce živin do krve?", options: ["V žaludku", "V tenkém střevě", "V tlustém střevě"], correct: 1 },
+                { q: "Který orgán filtruje krev a tvoří moč?", options: ["Srdce", "Ledviny", "Plíce"], correct: 1 }
+            ],
+            clovek_nervy: [
+                { q: "Jak se jmenuje základní buňka nervové soustavy?", options: ["Neuron", "Nefron", "Osteocyt"], correct: 0 },
+                { q: "Který smysl nám dává nejvíce informací?", options: ["Sluch", "Zrak", "Čich"], correct: 1 }
+            ]
+        };
+
+        const list = document.getElementById('content-list');
+        subjects.forEach(s => {
+            const div = document.createElement('div');
+            div.className = 'tema';
+            div.onclick = () => location.href = s.file;
+            div.innerHTML = `
+                <h2>${s.title}</h2>
+                <div class="popis">${s.desc}</div>
+                <div class="btn-group">
+                    <button class="btn-test" onclick="event.stopPropagation(); openTest('${s.id}')">📝 Spustit test</button>
+                    <button class="btn-info" onclick="event.stopPropagation(); location.href='${s.file}'">ℹ️ Prohlédnout učebnici</button>
+                </div>
+            `;
+            list.appendChild(div);
+        });
+
+        let activeQuestions = [];
+
+        function openTest(id) {
+            const pool = testPools[id];
+            const subject = subjects.find(s => s.id === id);
+            document.getElementById('testTitle').textContent = 'Zkušební test: ' + subject.title;
+            
+            activeQuestions = [...pool].sort(() => 0.5 - Math.random());
+            
+            let html = '';
+            activeQuestions.forEach((q, i) => {
+                html += `<div class="test-q">
+                    <strong>${i+1}. ${q.q}</strong><br>
+                    ${q.options.map((opt, j) => `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`).join('')}
+                    <div id="feedback${i}" class="feedback"></div>
+                </div>`;
+            });
+            document.getElementById('testContent').innerHTML = html;
+            document.getElementById('testModal').classList.add('show');
+        }
+
+        function closeTest() { document.getElementById('testModal').classList.remove('show'); }
+
+        function submitTest() {
+            activeQuestions.forEach((q, i) => {
+                const sel = document.querySelector(`input[name="q${i}"]:checked`);
+                const fb = document.getElementById(`feedback${i}`);
+                fb.className = 'feedback show ' + (sel && parseInt(sel.value) === q.correct ? 'correct' : 'wrong');
+                fb.textContent = sel && parseInt(sel.value) === q.correct ? '✅ Správně' : '❌ Zkus to znovu! Správná odpověď: ' + q.options[q.correct];
+            });
+        }
+    </script>
+</body>
+</html>

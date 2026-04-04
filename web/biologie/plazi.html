@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plazi - Mistři života na suchu</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #e0eafc; overflow-x: hidden; position: relative; padding: 20px; color: #333; }
+        header { background: linear-gradient(135deg, #3498db, #2980b9); position: relative; z-index: 1; color: white; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        h2 { color: #2980b9; font-size: 1.8em; margin-bottom: 20px; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-top: 30px; }
+        h3 { color: #3498db; margin: 25px 0 15px 0; font-size: 1.4em; }
+        p { line-height: 1.7; margin-bottom: 15px; font-size: 1.1em; }
+        ul, ol { margin-bottom: 20px; padding-left: 30px; }
+        li { margin-bottom: 10px; line-height: 1.6; font-size: 1.05em; }
+        li strong { color: #2980b9; }
+        .back-link { display: inline-block; margin-top: 30px; color: #2980b9; text-decoration: none; font-weight: bold; }
+        .back-link:hover { text-decoration: underline; }
+        .highlight { background: #e3f2fd; padding: 20px; border-left: 5px solid #3498db; border-radius: 5px; margin: 20px 0; }
+        .spiritual-box { background: #fff9db; padding: 20px; border-left: 5px solid #f1c40f; border-radius: 5px; margin: 20px 0; font-style: italic; }
+        .spiritual-box h4 { color: #d4ac0d; margin-bottom: 10px; font-style: normal; }
+        .dictionary-box { background: #f4f6f7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #dee2e6; }
+        .dictionary-box h4 { color: #7f8c8d; margin-bottom: 10px; }
+        .bg-circles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; } 
+        .circle { position: absolute; background: rgba(52, 152, 219, 0.1); border-radius: 50%; animation: float 20s infinite linear; } 
+        @keyframes float { 
+            0% { transform: translateY(100vh) scale(0); opacity: 0; } 
+            50% { opacity: 0.5; } 
+            100% { transform: translateY(-20vh) scale(1.5); opacity: 0; } 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐍 Plazi - Odolní obyvatelé suché země ☀️</h1>
+        <p>Poznáváme úžasné vybavení, které plazi mají pro život na slunci</p>
+    </header>
+
+    <div class="bg-circles" id="bgCircles"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+        <a href="index.html" class="back-link">← Zpět na přehled témat</a>
+
+        <div class="spiritual-box">
+            <h4>🙏 Duchovní okénko</h4>
+            "Hle, dny přicházejí, praví Panovník Hospodin... hle, já jsem to učinil." (Jeremjáš 32,27)
+            I u plazů, kteří se nám někdy mohou zdát cizí nebo děsiví, vidíme ruku Stvořitele, který každému tvoru dal vše potřebné k životu.
+        </div>
+
+        <h2>1. Charakteristika a suchozemská adaptace</h2>
+        <p>Plazi (Reptilia) jsou první třídou obratlovců, kteří se plně odpoutali od vodního prostředí. Jejich tělo je navrženo tak, aby minimalizovalo ztráty vody a umožnilo přežití v aridních podmínkách.</p>
+        
+        <h3>Kůže a keratinizace</h3>
+        <p>Kůže plazů je suchá a silně zrohovatělá (obsahuje bílkovinu <strong>keratin</strong>). Neobsahuje slizové žlázy. Je pokryta šupinami, štítky nebo krunýřem. Tato vrstva je neprostupná pro vodu i plyny, proto plazi nemohou dýchat kůží.</p>
+
+        <div class="dictionary-box">
+            <h4>📖 Slovníček pojmů</h4>
+            <ul>
+                <li><strong>Ektotermie:</strong> Stav, kdy teplota těla závisí na teplotě okolí. Plazi ji regulují chováním (sluněním).</li>
+                <li><strong>Amniotické vejce:</strong> Vejce chráněné skořápkou a vnitřními blanami (amnion, chorion, alantois), které umožňují vývoj zárodku na souši.</li>
+                <li><strong>Autotomie:</strong> Schopnost některých ještěrů odvrhnout ocas při nebezpečí.</li>
+            </ul>
+        </div>
+
+        <h2>2. Vnitřní stavba</h2>
+        <h3>Dýchací soustava</h3>
+        <p>Dýchají výhradně <strong>plícemi</strong>. Plicní vaky jsou členitější než u obojživelníků, což zvětšuje plochu pro výměnu plynů. Ventilaci zajišťuje pohyb mezižeberních svalů.</p>
+
+        <h3>Oběhová soustava</h3>
+        <p>Srdce je tvořeno dvěma síněmi a <strong>jednou komorou s neúplnou přepážkou</strong>. U krokodýlů je přepážka úplná (čtyřdílné srdce), ale k mísení krve dochází vně srdce skrze tzv. <em>foramen Panizzae</em>.</p>
+
+        <h3>Vylučovací soustava</h3>
+        <p>Plazi mají pravé ledviny (metanefros). Jako odpadní látku vylučují <strong>kyselinu močovou</strong>, což je velmi úsporné z hlediska spotřeby vody.</p>
+
+        <h2>3. Smysly a nervová soustava</h2>
+        <p>Nervová soustava je pokročilejší, dochází k rozvoji <strong>koncového mozku</strong> a jeho šedé kůry.</p>
+        <ul>
+            <li><strong>Zrak:</strong> Hlavní smysl většiny plazů. Barevné vidění je u mnoha druhů vyvinuto.</li>
+            <li><strong>Jacobsonův orgán:</strong> Umístěn v patře ústní dutiny, slouží k analýze pachových stop zachycených jazykem.</li>
+            <li><strong>Termorecepce:</strong> Někteří hadi (chřestýši) mají jamky citlivé na infračervené záření, vidí jimi teplo kořisti.</li>
+        </ul>
+
+        <h2>4. Rozmnožování a vývoj</h2>
+        <p>Oplození je vždy <strong>vnitřní</strong>. Většina plazů klade vejce (vejcorodost), ale existují i druhy vejcoživorodé nebo živorodé. Vývoj je <strong>přímý</strong> (bez stádia larvy).</p>
+
+        <h2>5. Hlavní skupiny a zástupci</h2>
+        <ul>
+            <li><strong>Želvy:</strong> Kostra srostlá s krunýřem, čelisti bez zubů (rohovitý zobák). (např. želva bahenní, kareta obrovská).</li>
+            <li><strong>Krokodýli:</strong> Nejpokročilejší plazi, srdce s úplnou přepážkou, zuby v jamkách. (např. krokodýl nilský, aligátor).</li>
+            <li><strong>Šupinatí:</strong>
+                <ul>
+                    <li><em>Ještěři:</em> Mají čtyři končetiny, pohyblivá víčka. (např. ještěrka obecná, varan komodský).</li>
+                    <li><em>Hadi:</em> Chybí končetiny, víčka srostlá a průhledná, pohyblivé spojení čelistí. (např. užovka obojková, zmije obecná).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="highlight">
+            <strong>Zajímavost z minulosti:</strong> V dávných dobách (v druhohorách) ovládali zemi obrovští plazi – dinosauři. Ti nám ukazují neuvěřitelnou rozmanitost v dějinách naší planety.
+        </div>
+
+        <a href="index.html" class="back-link">← Zpět na přehled témat</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Boží příroda - Vzdělávací portál pro žáky 8. ročníku</p>
+    </footer>
+
+    <script> 
+        const bg = document.getElementById("bgCircles"); 
+        for(let i = 0; i < 15; i++) { 
+            const circle = document.createElement("div"); 
+            circle.className = "circle"; 
+            const size = Math.random() * 100 + 50; 
+            circle.style.width = size + "px"; 
+            circle.style.height = size + "px"; 
+            circle.style.left = Math.random() * 100 + "vw"; 
+            circle.style.animationDuration = (Math.random() * 10 + 10) + "s"; 
+            circle.style.animationDelay = (Math.random() * 5) + "s"; 
+            bg.appendChild(circle); 
+        } 
+    </script>
+</body>
+</html>
